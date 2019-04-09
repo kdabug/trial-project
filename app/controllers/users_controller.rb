@@ -28,60 +28,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new({ password: password,
-                       email: email,
-                       username: username,
-                       avatar_id: avatar_id })
-
+    @user = User.new(user_params)
     if @user.save
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
-    # email = params[:email]
-    # password = params[:password]
-    # username = params[:username]
-    # avatar_id = params[:avatar_id]
-
-    # new_user = User.new({
-    #   password: password,
-    #   email: email,
-    #   username: username,
-    #   avatar_id: avatar_id,
-    # })
-
-    # if new_user.valid?
-    #   new_user.save!
-    #   user_data = {
-    #     username: username,
-    #     avatar_id: avatar_id,
-    #     email: user.email,
-    #     total_score: user.total_score,
-    #   }
-    #   render json: { user: user_data, token: gen_token(new_user.id) }
-    #   session[:user_id] = @user.id
-    #   redirect_to @user
-    # else
-    #   render nothing: true, status: 401
-    # end
   end
-
-  # def login
-  #   email = params[:email]
-  #   password = params[:password]
-
-  #   user = User.find_from_credentials email, password
-  #   if user.nil?
-  #     render nothing: true, status: 401
-  #   else
-  #     render json: { user: user, token: gen_token(user.id) }
-  #   end
-  # end
-
-  # def verify
-  #   ensure_signed_in
-  #   render json: { user: current_user }
-  # end
 
   def edit
     @user = User.find(params[:id])
@@ -101,6 +54,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :total_score, :password_confirmation)

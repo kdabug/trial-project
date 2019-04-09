@@ -16,7 +16,7 @@ const registerUser = async user => {
 };
 
 const loginUser = async ({ email, password }) => {
-  const login = await axios.get(`${BASE_URL}/login`);
+  //const login = await axios.get(`${BASE_URL}/login`);
   const resp = await axios.post(`${BASE_URL}/users/login`, {
     email,
     password
