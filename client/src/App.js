@@ -42,8 +42,6 @@ class App extends Component {
       userData: {},
       currentScore: "",
       gameData: {
-        questionData: [],
-        finalTrial: [],
         currentScore: 0
       }
     };
@@ -164,10 +162,13 @@ class App extends Component {
     const questionData = await getBoards();
     const finalTrial = await getRandom();
     this.setState((prevState, newState) => ({
-      questionData: questionData,
-      finalTrial: finalTrial,
-      currentScore: 0
+      gameData: {
+        questionData: questionData,
+        finalTrial: finalTrial,
+        currentScore: 0
+      }
     }));
+    console.log("startGameData gameData", this.state.gameData);
   }
 
   // async restartGame() {
@@ -191,6 +192,7 @@ class App extends Component {
         }
       }));
     }
+    console.log("this is gameData cdm app.js", this.state.gameData);
   }
 
   render() {
@@ -203,6 +205,7 @@ class App extends Component {
           render={props => (
             <TitlePage
               {...props}
+              gameData={this.state.gameData}
               currentUser={this.state.currentUser}
               userdata={this.state.userData}
             />
@@ -292,7 +295,11 @@ class App extends Component {
           render={props => (
             <>
               <GameHeader show={true} />
-              <RenderGame currentScore={this.state.currentScore} />
+              <RenderGame
+                {...props}
+                currentScore={this.state.currentScore}
+                gameData={this.state.gameData}
+              />
               <GameFooter />
             </>
           )}

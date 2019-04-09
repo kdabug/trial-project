@@ -12,18 +12,18 @@
 
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "http://localhost:3000";
 
 const getBoards = async () => {
-  const respData = await axios.post(`${BASE_URL}/get-boards`);
-  console.log("this is create user: resp", respData);
-  return respData;
+  const respData = await axios.get(`${BASE_URL}/get-boards`);
+  console.log("this is getBoards: resp", respData);
+  return respData.data;
 };
 
 const getRandom = async () => {
-  const respData = await axios.put(`${BASE_URL}/get-random/`);
+  const respData = await axios.get(`${BASE_URL}/get-random/`);
   console.log("this is random q: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 export { getBoards, getRandom };

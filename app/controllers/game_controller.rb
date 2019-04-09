@@ -9,8 +9,6 @@
 #   end
 
 class GamesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @user = User.find(params[:user_id])
     @games = Game.where(user_id: @user.id)

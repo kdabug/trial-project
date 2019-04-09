@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   #     t.index ["user_id"], name: "index_questions_on_user_id"
   #   end
 
-  before_action :authenticate_user!
+  before_action :authenticate_user, only: [:create, :update, :destroy]
 
   def index
     @category = Category.find(params[:category_id])

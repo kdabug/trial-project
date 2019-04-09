@@ -11,10 +11,9 @@ class RenderGame extends Component {
       currentClue: "",
       showQuestion: false
     };
-    this.getUsersQuestions = this.getUsersQuestions.bind(this);
-    this.handleAskQuestionButton = this.handleAskQuestionButton.bind(this);
+    this.handleAskQuestion = this.handleAskQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSumbit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTileClick = this.handleTileClick.bind(this);
   }
 
@@ -27,15 +26,26 @@ class RenderGame extends Component {
       }
     }));
   }
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
   }
   handleTileClick(e) {
     e.preventDefault();
   }
-  handleAskQuestion(e, clue) {
+  handleAskQuestion(e) {
     e.preventDefault();
-    this.setState(prevState => ({ showQuestion: !prevState.showQuestion }));
+    const { name, value } = e.target;
+    console.log("handleAskQuestions", name, value);
+    this.setState(prevState => ({
+      showQuestion: !prevState.showQuestion,
+      currentClue: name
+    }));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.gameData !== nextProps.gameData) {
+      this.setState({ gameData: nextProps.gameData });
+    }
   }
 
   async componentDidMount() {
@@ -49,6 +59,7 @@ class RenderGame extends Component {
     // }
   }
   render() {
+    console.log("this is renderGame props", this.props);
     return (
       <div className="render-game-container">
         <>
@@ -62,22 +73,25 @@ class RenderGame extends Component {
           )}
         </>
         <>
-          {this.props.questionData ? (
+          {this.props.gameData ? (
             <>
-              {this.props.questionData.map((category, index) => (
+              {!this.state.showQuestion && (
                 <>
-                  <h1>{category.title}</h1>
-
-                  {category.map((clue, i) => (
-                    <div
-                      className="question-information"
-                      onClick={() => this.handleAskQuestion(clue)}
-                    >
-                      {clue.value}
-                    </div>
+                  {this.props.gameData.questionData.map((category, index) => (
+                    <>
+                      <h1>{category.title}</h1>
+                      {category.clues.map((clue, i) => (
+                        <div
+                          className="question-information"
+                          onClick={this.handleAskQuestion}
+                        >
+                          {clue.value}
+                        </div>
+                      ))}
+                    </>
                   ))}
                 </>
-              ))}
+              )}
             </>
           ) : (
             <Loading show="yes" />

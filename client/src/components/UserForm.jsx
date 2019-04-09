@@ -82,6 +82,9 @@ export default props => {
           <button type="submit" onClick={onClick}>
             {backButtonText}
           </button>
+          <button type="submit" onClick={() => this.props.history.push(`/`)}>
+            Back to Home
+          </button>
         </form>
       )}
     </>
