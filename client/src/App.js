@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import { Link, Route, Switch, withRouter } from "react-router-dom";
 import TitlePage from "./components/TitlePage";
 import GameHeader from "./components/GameHeader";
-import {
-  updateUser,
-  registerUser,
-  loginUser,
-  logoutUser,
-  verifyUser
-} from "./services/usersAPI";
+import { updateUser, registerUser, loginUser } from "./services/usersAPI";
 import decode from "jwt-decode";
 import "./App.css";
 import { getBoards, getRandom } from "./services/jeopardyAPI";
@@ -117,7 +111,6 @@ class App extends Component {
   }
 
   async handleLogout() {
-    const logout = await logoutUser();
     localStorage.removeItem("jwt");
     this.setState({
       currentUser: null,
