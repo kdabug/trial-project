@@ -60,6 +60,12 @@ const updateUser = async (id, edits) => {
   return respData;
 };
 
+const deleteUser = async id => {
+  const respData = await axios.delete(`${BASE_URL}/users/${id}/`);
+  console.log("this is delete user: resp", respData);
+  return respData;
+};
+
 const fetchUserHistory = async id => {
   const respData = await axios.get(`${BASE_URL}/games/${id}/`);
   console.log("this is fetchUserCategories: resp", respData);
@@ -68,10 +74,10 @@ const fetchUserHistory = async id => {
 
 export {
   fetchUserHistory,
-  fetchUserQuestions,
   updateUser,
   registerUser,
   loginUser,
   logoutUser,
-  verifyUser
+  verifyUser,
+  deleteUser
 };

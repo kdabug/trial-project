@@ -12,7 +12,7 @@ import {
   deleteCategory,
   updateCategory
 } from "../services/createCustomGameAPI.js";
-import { fetchUserHistory } from "../services/usersAPI";
+import { fetchUserHistory, deleteUser } from "../services/usersAPI";
 import CategoryDetails from "./CategoryDetails";
 
 class UserProfilePage extends Component {
@@ -159,4 +159,4 @@ class UserProfilePage extends Component {
     );
   }
 }
-export default withRouter(UserProfile);
+export default withRouter(UserProfilePage);

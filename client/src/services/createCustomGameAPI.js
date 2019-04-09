@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = "http://localhost:3000/";
 
 const createCategory = async category => {
-  const respData = await axios.post(`${BASE_URL}/users/register`, user);
+  const respData = await axios.post(`${BASE_URL}/users/register`, category);
   console.log("this is create category: resp", respData);
   return respData;
 };
@@ -28,7 +28,7 @@ const deleteCategory = async id => {
 };
 
 const createQuestion = async questionData => {
-  const respData = await axios.post(`${BASE_URL}/users/register`, user);
+  const respData = await axios.post(`${BASE_URL}/users/register`, questionData);
   console.log("this is create question: resp", respData);
   return respData;
 };

@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import AskQuestion from "./AskQuestion";
+import Loading from "./Loading";
 
 class RenderGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 10;
-      currentClue: ''
+      timer: 10,
+      currentClue: "",
+      showQuestion: false
     };
     this.getUsersQuestions = this.getUsersQuestions.bind(this);
     this.handleAskQuestionButton = this.handleAskQuestionButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSumbit.bind(this);
+    this.handleTileClick = this.handleTileClick.bind(this);
   }
 
   handleChange(e) {
@@ -26,49 +29,32 @@ class RenderGame extends Component {
   }
   async handleSubmit(e) {
     e.preventDefault();
-    const resp = await createNewQuestion(
-      this.props.categoryData.id,
-      this.state.userInputData
-    );
-    console.log(resp);
-    this.setState(prevState => ({
-      userInputData: {
-        ...prevState.userInputData
-      }
-    }));
   }
-  handleShowMoreButton(e) {
+  handleTileClick(e) {
     e.preventDefault();
-    this.setState(prevState => ({ showMore: !prevState.showMore }));
   }
   handleAskQuestion(e, clue) {
     e.preventDefault();
     this.setState(prevState => ({ showQuestion: !prevState.showQuestion }));
-    
-  }
-
-  async getGameHistory() {
-    const gameHistory = await getGameHistory();
-    this.setState(prev);
   }
 
   async componentDidMount() {
-    const checkUser = await localStorage.getItem("jwt");
-    if (checkUser) {
-      const user = decode(checkUser);
-      console.log(
-        "this is user ComponentDidMount on UserProfile Component",
-        user
-      );
-    }
+    // const checkUser = await localStorage.getItem("jwt");
+    // if (checkUser) {
+    //   const user = decode(checkUser);
+    //   console.log(
+    //     "this is user ComponentDidMount on UserProfile Component",
+    //     user
+    //   );
+    // }
   }
   render() {
     return (
       <div className="render-game-container">
         <>
-          {showQuestion && (
+          {this.state.showQuestion && (
             <AskQuestion
-              clue={currentlue}
+              clue={this.state.currentClue}
               timer={this.state.timer}
               onSubmit={this.checkAnswer}
               onChange={this.handleChange}
@@ -76,9 +62,9 @@ class RenderGame extends Component {
           )}
         </>
         <>
-          {questionData ? (
+          {this.props.questionData ? (
             <>
-              {questionData.map((category, index) => (
+              {this.props.questionData.map((category, index) => (
                 <>
                   <h1>{category.title}</h1>
 

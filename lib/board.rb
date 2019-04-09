@@ -9,7 +9,7 @@ class Board
     response = []
     arr.each do |i|
       new_category = HTTParty.get("http://jservice.io/api/category", { body: { id: i } })
-      puts new_category
+       new_category
       if new_category["clues"].length > 4
         response = response.push(new_category)
       end

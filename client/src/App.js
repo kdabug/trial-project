@@ -47,7 +47,6 @@ class App extends Component {
         currentScore: 0
       }
     };
-    this.handleTileClick = this.handleTileClick.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleLoginFormChange = this.handleLoginFormChange.bind(this);
     this.handleEditFormChange = this.handleEditFormChange.bind(this);
