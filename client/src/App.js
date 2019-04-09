@@ -196,112 +196,106 @@ class App extends Component {
   render() {
     return (
       <div className="Main-app-body">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <TitlePage
+        Hello
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <TitlePage
+              {...props}
+              currentUser={this.state.currentUser}
+              userdata={this.state.userData}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/login"
+          render={props => (
+            <>
+              <LoginForm
                 {...props}
-                currentUser={this.state.currentUser}
-                userdata={this.state.userData}
+                show={this.state.currentUser}
+                toggle={this.state.toggleLogin}
+                onChange={this.handleLoginFormChange}
+                onSubmit={this.handleLogin}
+                email={this.state.loginFormData.email}
+                password={this.state.loginFormData.password}
+                onClick={this.handleLoginClick}
               />
-            )}
-          />
-          <Route
-            exact
-            path="/login"
-            render={props => (
-              <>
-                <LoginForm
-                  {...props}
-                  show={this.state.currentUser}
-                  toggle={this.state.toggleLogin}
-                  onChange={this.handleLoginFormChange}
-                  onSubmit={this.handleLogin}
-                  email={this.state.loginFormData.email}
-                  password={this.state.loginFormData.password}
-                  onClick={this.handleLoginClick}
-                />
-                <UserForm
-                  {...props}
-                  userData={""}
-                  title={"Register User"}
-                  onClick={this.handleLoginClick}
-                  show={this.state.currentUser}
-                  toggle={this.state.toggleLogin}
-                  onChange={this.handleUserFormChange}
-                  onSubmit={this.handleRegister}
-                  username={this.state.registerFormData.username}
-                  email={this.state.registerFormData.email}
-                  avatar={this.state.registerFormData.avatar}
-                  password={this.state.registerFormData.password}
-                  submitButtonText="Submit"
-                  backButtonText="Back to Login"
-                  passwordAsk={"y"}
-                />
-                <Loading show={this.state.currentUser} />
-              </>
-            )}
-          />
-          <Route
-            path="/user/:id/edit"
-            render={props => (
               <UserForm
                 {...props}
-                title={"Edit User"}
-                userData={this.state.userData}
-                onChange={this.handleEditFormChange}
-                onSubmit={this.handleEdit}
-                username={this.state.userData.username}
-                email={this.state.userData.email}
-                password={this.state.userData.password}
-                avatar={this.state.userData.avatar}
-                submitButtonText={"Submit"}
-                backButtonText={"Cancel (Back to User)"}
-                toggle={""}
-                onClick={() =>
-                  this.props.history.push(
-                    `/user/${this.state.userData.id}/username/${
-                      this.state.userData.username
-                    }`
-                  )
-                }
-                show={""}
-                passwordAsk={""}
+                userData={""}
+                title={"Register User"}
+                onClick={this.handleLoginClick}
+                show={this.state.currentUser}
+                toggle={this.state.toggleLogin}
+                onChange={this.handleUserFormChange}
+                onSubmit={this.handleRegister}
+                username={this.state.registerFormData.username}
+                email={this.state.registerFormData.email}
+                avatar={this.state.registerFormData.avatar}
+                password={this.state.registerFormData.password}
+                submitButtonText="Submit"
+                backButtonText="Back to Login"
+                passwordAsk={"y"}
               />
-            )}
-          />
-          <Route
-            exact
-            path="/user/:id/username/:username"
-            render={props => (
-              <UserProfilePage {...props} userData={this.state.userData} />
-            )}
-          />
-          <Route exact path="/contact" render={() => <Contact />} />
-          <Route
-            exact
-            path="/logout"
-            render={props => (
-              <LogoutForm {...props} handleLogout={this.handleLogout} />
-            )}
-          />
-          <Route
-            exact
-            path="/play"
-            render={<RenderGame currentScore={this.state.currentScore} />}
-          />
-          <Route path="/play" render={<AskQuestion />} />
-        </Switch>
+              <Loading show={this.state.currentUser} />
+            </>
+          )}
+        />
+        <Route
+          path="/user/:id/edit"
+          render={props => (
+            <UserForm
+              {...props}
+              title={"Edit User"}
+              userData={this.state.userData}
+              onChange={this.handleEditFormChange}
+              onSubmit={this.handleEdit}
+              username={this.state.userData.username}
+              email={this.state.userData.email}
+              password={this.state.userData.password}
+              avatar={this.state.userData.avatar}
+              submitButtonText={"Submit"}
+              backButtonText={"Cancel (Back to User)"}
+              toggle={""}
+              onClick={() =>
+                this.props.history.push(
+                  `/user/${this.state.userData.id}/username/${
+                    this.state.userData.username
+                  }`
+                )
+              }
+              show={""}
+              passwordAsk={""}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/user/:id/username/:username"
+          render={props => (
+            <UserProfilePage {...props} userData={this.state.userData} />
+          )}
+        />
+        <Route exact path="/contact" render={() => <Contact />} />
+        <Route
+          exact
+          path="/logout"
+          render={props => (
+            <LogoutForm {...props} handleLogout={this.handleLogout} />
+          )}
+        />
         <Route
           path="/play"
-          render={
+          render={props => (
             <>
-              <GameHeader />
+              <GameHeader show={true} />
+              <RenderGame currentScore={this.state.currentScore} />
               <GameFooter />
             </>
-          }
+          )}
         />
       </div>
     );
