@@ -6,7 +6,6 @@ import RightOrWrong from "./RightOrWrong";
 import FinalTrial from "./FinalTrial";
 import Countdown from "react-countdown-now";
 import CreateBoard from "./CreateBoard";
-import { Countdown } from "react-countdown-now/dist/utils";
 
 class RenderGame extends Component {
   constructor(props) {
@@ -19,11 +18,10 @@ class RenderGame extends Component {
       toggleShowQuestion: false,
       toggleAnswered: false,
       toggleFinalTrial: false,
-      toggleSecondRound: false,
-      propsData: {},
-      roundOne: {},
-      roundTwo: {},
-      gameData: {},
+      toggleSecondRound: true,
+      roundOne: "",
+      roundTwo: "",
+      gameData: this.props.gameData,
       userInputData: {
         answer: ""
       },
@@ -83,11 +81,11 @@ class RenderGame extends Component {
     }));
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.gameData !== nextProps.gameData) {
-      this.setState({ gameData: nextProps.gameData });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.gameData !== nextProps.gameData) {
+  //     this.setState({ gameData: nextProps.gameData });
+  //   }
+  // }
   goToRoundTwo() {
     this.setState(prevState => ({
       gameData: this.state.roundTwo,
@@ -95,21 +93,21 @@ class RenderGame extends Component {
     }));
   }
   setRoundData() {
-    const roundOne = this.state.gameData.questionData.filter(el => el.id < 5);
-    const roundTwo = this.state.gameData.questionData.filter(
-      el => el.id > 5 && el.id < 11
-    );
-    this.setState(prevState => ({
+    const roundOne = this.props.gameData.questionData.splice(0, 5);
+    const roundTwo = this.props.gameData.questionData.splice(0, 5);
+    console.log("this is round1", roundOne);
+    console.log("this is round2", roundTwo);
+    this.setState((prevState, nextState) => ({
       roundOne,
-      roundTwo,
-      gameData: roundOne
+      roundTwo
     }));
+    console.log("this is renderprops cdm state", this.state);
   }
 
   async componentDidMount() {
-    await this.setState({ gameData: this.props.gameData });
-    await this.setRoundData();
+    this.setRoundData();
   }
+
   render() {
     console.log("this is renderGame props", this.props);
     return (
@@ -150,17 +148,17 @@ class RenderGame extends Component {
           )}
         </>
         <>
-          {!this.state.toggleShowQuestion ? (
+          {this.state.roundOne ? (
             <>
               {!this.state.toggleSecondRound ? (
                 <CreateBoard
-                  questionData={this.props.gameData.questionData}
+                  questionData={this.state.roundOne}
                   handleAskQuestion={this.handleAskQuestion}
                   round={1}
                 />
               ) : (
                 <CreateBoard
-                  questionData={this.props.gameData.questionData}
+                  questionData={this.state.roundTwo}
                   handleAskQuestion={this.handleAskQuestion}
                   round={2}
                 />
