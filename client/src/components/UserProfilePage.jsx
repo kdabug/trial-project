@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import DisplayGameHistory from "./DisplayGameHistory";
 import decode from "jwt-decode";
 import {
@@ -30,7 +30,7 @@ class UserProfilePage extends Component {
     this.addUserCategory = this.addUserCategory.bind(this);
     this.addUserQuestion = this.addUserQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSumbit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
   }
@@ -75,6 +75,13 @@ class UserProfilePage extends Component {
   }
 
   async handleDeleteUser(id) {
+    const deletedUser = await deleteUser(this.props.userData.id);
+  }
+
+  async handleDeleteQuestion(id) {
+    const deletedUser = await deleteUser(this.props.userData.id);
+  }
+  async handleDeleteCategory(id) {
     const deletedUser = await deleteUser(this.props.userData.id);
   }
 
@@ -149,10 +156,7 @@ class UserProfilePage extends Component {
           </div>
           <div className="game-history-container">
             <h1>Game History:</h1>
-            <DisplayGameHistory
-              className="station-list"
-              stationList={this.state.favorites}
-            />
+            <DisplayGameHistory className="station-list" />
           </div>
         </div>
       </div>

@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { Link, Route, Switch, withRouter } from "react-router-dom";
 import TitlePage from "./components/TitlePage";
 import GameHeader from "./components/GameHeader";
-import { updateUser, registerUser, loginUser } from "./services/usersAPI";
+import {
+  fetchUserData,
+  updateUser,
+  registerUser,
+  loginUser
+} from "./services/usersAPI";
 import decode from "jwt-decode";
 import "./App.css";
 import { getBoards, getRandom } from "./services/jeopardyAPI";
@@ -53,18 +58,19 @@ class App extends Component {
 
   async handleLogin(e) {
     e.preventDefault();
-    const userData = await loginUser(this.state.loginFormData);
+    const userToken = await loginUser(this.state.loginFormData);
+    localStorage.setItem("jwt", userToken.jwt);
     console.log("userdata from handleLogin", userData);
+    const userData = await fetchUserData();
     this.setState({
-      currentUser: userData.data.user.username,
-      token: userData.data.token,
-      userData: userData.data.user,
+      currentUser: userData,
+      token: userToken.jwt,
+      userData: userData,
       loginFormData: {
         email: "",
         password: ""
       }
     });
-    localStorage.setItem("jwt", userData.data.token);
     this.props.history.push(`/`);
   }
 

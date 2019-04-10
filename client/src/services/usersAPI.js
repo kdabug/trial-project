@@ -26,6 +26,12 @@ const loginUser = async ({ email, password }) => {
   return data;
 };
 
+const fetchUserData = async () => {
+  const respData = await api.get(`${BASE_URL}/users/current`);
+  console.log("this is current userData: resp", respData);
+  return respData;
+};
+
 const updateUser = async (id, edits) => {
   const respData = await api.put(`${BASE_URL}/users/${id}/`, edits);
   console.log("this is update user: resp", respData);
@@ -44,4 +50,11 @@ const fetchUserHistory = async id => {
   return respData;
 };
 
-export { fetchUserHistory, updateUser, registerUser, loginUser, deleteUser };
+export {
+  fetchUserData,
+  fetchUserHistory,
+  updateUser,
+  registerUser,
+  loginUser,
+  deleteUser
+};
