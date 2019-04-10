@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/get-random", to: "responses#get_random"
 
   post "/user_token" => "user_token#create"
+  get "/users/current", to: "users#current"
   resources :users do
     resources :categories do
       resources :questions

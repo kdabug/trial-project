@@ -9,6 +9,10 @@ class User < ApplicationRecord
     {
       id: id,
       email: email,
+      username: username,
+      total_score: total_score,
+      avatar_id: avatar_id,
+
     }
   end
 end
