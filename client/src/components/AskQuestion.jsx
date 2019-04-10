@@ -1,9 +1,11 @@
 import React from "react";
+import Countdown from "react-countdown-now";
 
 export default props => {
   console.log("this is askquestion props", props);
   return (
     <div className="ask-question-container">
+      <Countdown date={Date.now() + props.timer} onComplete={props.onSubmit} />
       <h2 className="ask-question-header">Question</h2>
       <form className="ask-question-form" onSubmit={props.onSubmit}>
         <>

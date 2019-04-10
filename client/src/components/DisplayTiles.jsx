@@ -1,27 +1,41 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react";
 
-const DisplayTiles = props => {
-  const { questionData } = props;
-  console.log("displayTiles: props.questionData", questionData);
-  //   const createDate = time => {
-  //     const date = new Date(time);
-  //     return date.toLocaleString("en-US");
-  //   };
-  return (
-    <div className="stock-list">
-      {questionData &&
-        questionData.map((category, index) => (
-          <div className="category-container">
-            <h1>{category.title}</h1>
-            {category.map((question, i) => (
-              <div className="question-information" onClick={onClick}>
-                hi question
-              </div>
-            ))}
-          </div>
-        ))}
-    </div>
-  );
-};
-export default withRouter(CommentList);
+export default class DisplayTiles extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: true
+    };
+    this.toggleClass = this.toggleClass.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  toggleClass(e) {
+    e.preventDefault();
+    this.setState(prevState => ({
+      active: !prevState.active
+    }));
+  }
+  onClick(e, clue) {
+    e.preventDefault();
+    this.props.handleAskQuestion(e, clue);
+    this.toggleClass(e);
+  }
+
+  render() {
+    const { clue, value } = this.props;
+    const { active } = this.state;
+    return (
+      <>
+        <div
+          type="button"
+          className={`question-information-${active}`}
+          onClick={e => this.onClick(e, clue)}
+          id={clue.id}
+        >
+          {value * 100}
+        </div>
+      </>
+    );
+  }
+}

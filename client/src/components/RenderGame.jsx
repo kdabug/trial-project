@@ -2,18 +2,25 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import AskQuestion from "./AskQuestion";
 import Loading from "./Loading";
+import RightOrWrong from "./RightOrWrong";
+import FinalTrial from "./FinalTrial";
+import Countdown from "react-countdown-now";
+import CreateBoard from "./CreateBoard";
 
 class RenderGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 10,
+      gameTimer: 1800,
+      quesitonTimer: 10,
       currentClue: {},
       showQuestion: false,
+      toggleAnswered: false,
       gameData: {},
       userInputData: {
         answer: ""
-      }
+      },
+      currentScore: 0
     };
     this.handleAskQuestion = this.handleAskQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +28,7 @@ class RenderGame extends Component {
     this.handleTileClick = this.handleTileClick.bind(this);
     this.backToBoard = this.backToBoard.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.finalTrial = this.finalTrial.bind(this);
   }
 
   handleChange(e) {
@@ -42,18 +50,18 @@ class RenderGame extends Component {
     e.preventDefault();
     const { id } = e.target;
     console.log("handleAskQuestions", id);
-
     this.setState(prevState => ({
       showQuestion: !prevState.showQuestion,
       currentClue: clue
     }));
   }
-  checkAnswer() {
+  checkAnswer(e) {
     e.preventDefault();
   }
-  backToBoard() {
+  backToBoard(e) {
     e.preventDefault();
   }
+  finalTrial() {}
 
   componentWillReceiveProps(nextProps) {
     if (this.props.gameData !== nextProps.gameData) {
@@ -68,6 +76,10 @@ class RenderGame extends Component {
     console.log("this is renderGame props", this.props);
     return (
       <div className="render-game-container">
+        <Countdown
+          date={Date.now() + this.state.gameTimer}
+          onComplete={this.finalTrial}
+        />
         <>
           {this.state.showQuestion && (
             <AskQuestion
@@ -80,11 +92,10 @@ class RenderGame extends Component {
           )}
         </>
         <>
-          {this.state.showQuestion && (
+          {this.state.toggleAnswered && (
             <RightOrWrong
               score={this.state.currentClue}
               onSubmit={this.backToBoard}
-              onChange={this.handleChange}
               answer={this.state.currentClue.answer}
             />
           )}
@@ -93,24 +104,10 @@ class RenderGame extends Component {
           {this.props.gameData ? (
             <>
               {!this.state.showQuestion && (
-                <>
-                  {this.props.gameData.questionData.map((category, index) => (
-                    <>
-                      <h1>{category.title}</h1>
-                      {category.clues.map((clue, i) => (
-                        <div
-                          type="button"
-                          className="question-information"
-                          onClick={e => this.handleAskQuestion(e, clue)}
-                          id={clue.id}
-                          placeholder={clue.value}
-                        >
-                          {clue.value}
-                        </div>
-                      ))}
-                    </>
-                  ))}
-                </>
+                <CreateBoard
+                  questionData={this.props.gameData.questionData}
+                  handleAskQuestion={this.handleAskQuestion}
+                />
               )}
             </>
           ) : (

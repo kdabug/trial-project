@@ -117,3 +117,7 @@ body {
     top: 0px;
   }
 }
+
+.display-tile-false {
+  pointer-events: none;
+}
