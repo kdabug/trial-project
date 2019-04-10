@@ -118,6 +118,38 @@ body {
   }
 }
 
-.display-tile-false {
+.create-board-container {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100px;
+  border: 4px solid #cedaf4;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.category-column-container {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 100px;
+  border: 4px solid #cedaf4;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.question-information-false {
   pointer-events: none;
+}
+
+.question-information-true {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  border: 4px solid #cedaf4;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 }

@@ -23,7 +23,7 @@ export default class DisplayTiles extends Component {
   }
 
   render() {
-    const { clue, value } = this.props;
+    const { clue, value, round } = this.props;
     const { active } = this.state;
     return (
       <>
@@ -33,7 +33,7 @@ export default class DisplayTiles extends Component {
           onClick={e => this.onClick(e, clue)}
           id={clue.id}
         >
-          {value * 100}
+          {value * 100 * round}
         </div>
       </>
     );

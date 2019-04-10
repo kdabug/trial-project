@@ -6,6 +6,7 @@ import RightOrWrong from "./RightOrWrong";
 import FinalTrial from "./FinalTrial";
 import Countdown from "react-countdown-now";
 import CreateBoard from "./CreateBoard";
+import { Countdown } from "react-countdown-now/dist/utils";
 
 class RenderGame extends Component {
   constructor(props) {
@@ -14,8 +15,14 @@ class RenderGame extends Component {
       gameTimer: 1800,
       quesitonTimer: 10,
       currentClue: {},
-      showQuestion: false,
+      currentValue: 0,
+      toggleShowQuestion: false,
       toggleAnswered: false,
+      toggleFinalTrial: false,
+      toggleSecondRound: false,
+      propsData: {},
+      roundOne: {},
+      roundTwo: {},
       gameData: {},
       userInputData: {
         answer: ""
@@ -29,6 +36,7 @@ class RenderGame extends Component {
     this.backToBoard = this.backToBoard.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.finalTrial = this.finalTrial.bind(this);
+    this.setRoundData = this.setRoundData.bind(this);
   }
 
   handleChange(e) {
@@ -51,8 +59,9 @@ class RenderGame extends Component {
     const { id } = e.target;
     console.log("handleAskQuestions", id);
     this.setState(prevState => ({
-      showQuestion: !prevState.showQuestion,
-      currentClue: clue
+      toggleShowQuestion: !prevState.toggleShowQuestion,
+      currentClue: clue,
+      currentValue: clue.id
     }));
   }
   checkAnswer(e) {
@@ -60,17 +69,46 @@ class RenderGame extends Component {
   }
   backToBoard(e) {
     e.preventDefault();
+    this.setState(prevState => ({
+      toggleShowQuestion: false,
+      toggleAnswered: false,
+      toggleFinalTrial: false
+    }));
   }
-  finalTrial() {}
+  finalTrial() {
+    this.setState(prevState => ({
+      toggleShowQuestion: false,
+      toggleAnswered: false,
+      toggleFinalTrial: !prevState.toggleFinalTrial
+    }));
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.gameData !== nextProps.gameData) {
       this.setState({ gameData: nextProps.gameData });
     }
   }
+  goToRoundTwo() {
+    this.setState(prevState => ({
+      gameData: this.state.roundTwo,
+      toggleSecondRound: !prevState.toggleSecondRound
+    }));
+  }
+  setRoundData() {
+    const roundOne = this.state.gameData.questionData.filter(el => el.id < 5);
+    const roundTwo = this.state.gameData.questionData.filter(
+      el => el.id > 5 && el.id < 11
+    );
+    this.setState(prevState => ({
+      roundOne,
+      roundTwo,
+      gameData: roundOne
+    }));
+  }
 
   async componentDidMount() {
-    this.setState({ gameData: this.props.gameData });
+    await this.setState({ gameData: this.props.gameData });
+    await this.setRoundData();
   }
   render() {
     console.log("this is renderGame props", this.props);
@@ -81,15 +119,26 @@ class RenderGame extends Component {
           onComplete={this.finalTrial}
         />
         <>
-          {this.state.showQuestion && (
+          {this.state.toggleShowQuestion && (
             <AskQuestion
               clue={this.state.currentClue}
+              value={this.state.currentValue}
               timer={this.state.timer}
               onSubmit={this.checkAnswer}
               onChange={this.handleChange}
               answer={this.state.userInputData.answer}
             />
           )}
+          <>
+            {this.state.toggleFinalTrial && (
+              <FinalTrial
+                value={this.state.wager}
+                onSubmit={this.sendToFinalQuestion}
+                onChange={this.handleChange}
+                currentScore={this.state.userInputData.currentScore}
+              />
+            )}
+          </>
         </>
         <>
           {this.state.toggleAnswered && (
@@ -101,12 +150,19 @@ class RenderGame extends Component {
           )}
         </>
         <>
-          {this.props.gameData ? (
+          {!this.state.toggleShowQuestion ? (
             <>
-              {!this.state.showQuestion && (
+              {!this.state.toggleSecondRound ? (
                 <CreateBoard
                   questionData={this.props.gameData.questionData}
                   handleAskQuestion={this.handleAskQuestion}
+                  round={1}
+                />
+              ) : (
+                <CreateBoard
+                  questionData={this.props.gameData.questionData}
+                  handleAskQuestion={this.handleAskQuestion}
+                  round={2}
                 />
               )}
             </>

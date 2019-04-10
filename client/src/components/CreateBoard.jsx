@@ -6,7 +6,7 @@ export default props => (
     {props.questionData && (
       <>
         {props.questionData.map((category, index) => (
-          <>
+          <div className="category-column-container">
             <h1 key={index}>{category.title}</h1>
             {category.clues.map((clue, i) => (
               <>
@@ -14,10 +14,11 @@ export default props => (
                   handleAskQuestion={props.handleAskQuestion}
                   value={i}
                   clue={clue}
+                  round={props.round}
                 />
               </>
             ))}
-          </>
+          </div>
         ))}
       </>
     )}
