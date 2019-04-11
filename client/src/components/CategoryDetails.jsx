@@ -24,12 +24,14 @@ export default class CategoryDetails extends Component {
   render() {
     const {
       categoryData,
+      questions,
       handleDeleteCategory,
       handleDeleteQuestion,
       handleChange,
-      handleSubmit
+      handleQuestionSubmit
     } = this.props;
     const { showMore, showAdd } = this.state;
+    const clues = questions.filter(el => el.category_id === categoryData.id);
     return (
       <div className="category-detail-container">
         <h2>{categoryData.category}</h2>
@@ -44,7 +46,7 @@ export default class CategoryDetails extends Component {
         </button>
         <button
           className="pretty-button"
-          onClick={() => handleDeleteCategory(categoryData)}
+          onClick={e => handleDeleteCategory(e, categoryData.id)}
         >
           Delete Category
         </button>
@@ -53,22 +55,22 @@ export default class CategoryDetails extends Component {
             <>
               <CreateQuestion
                 onChange={handleChange}
-                onSubmit={handleSubmit}
+                onSubmit={handleQuestionSubmit}
                 answer={this.props.userInputData.answer}
                 question={this.props.userInputData.question}
               />
             </>
           )}
-          {showMore && (
+          {questions && (
             <>
-              {categoryData.map((clue, i) => (
+              {clues.map((clue, i) => (
                 <div className="more-details" key={i}>
                   <h3>Answer: {clue}</h3>
                   <h3>Question: {clue.id}</h3>
                   <button
                     className="question-button"
                     key={i}
-                    onClick={() => handleDeleteQuestion(clue)}
+                    onClick={e => handleDeleteQuestion(e, clue)}
                   >
                     Delete Question
                   </button>

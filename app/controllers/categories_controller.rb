@@ -19,29 +19,19 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def new
-    @user = User.find(params[:user_id])
-    @category = Category.new
-    render json: @category
-  end
-
   def create
-    @user = User.find(params[:user_id])
     @category = Category.new(category_params)
     if @category.save
-      redirect_to user_category_path(@user, @category)
       render json: @category
     end
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @category = Category.find(params[:id])
     render json: @category
   end
 
   def update
-    @user = User.find(params[:user_id])
     @category = Category.find(params[:id])
     @category.update!(category_params)
     if @category.update_attributes(category_params)
@@ -52,9 +42,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @user = User.find(params[:user_id])
     @category.destroy
-    redirect_to user_categories_path(@user)
   end
 
   private

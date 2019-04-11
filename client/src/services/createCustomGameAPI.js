@@ -8,7 +8,7 @@ const api = axios.create({
   }
 });
 
-const createCategory = async category => {
+const createCategory = async (user_id, category) => {
   const respData = await api.post(`/categories`, category);
   console.log("this is create category: resp", respData);
   return respData.data;

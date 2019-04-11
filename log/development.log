@@ -8364,3 +8364,245 @@ Processing by QuestionsController#index as HTML
 Completed 200 OK in 20ms (Views: 6.7ms | ActiveRecord: 4.3ms)
 
 
+Started GET "/get-boards" for ::1 at 2019-04-11 12:50:12 -0400
+  [1m[35m (41.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1174ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:50:13 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 75ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories?user_id=1" for ::1 at 2019-04-11 12:50:14 -0400
+Processing by CategoriesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:12
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/categories_controller.rb:14
+Completed 200 OK in 59ms (Views: 7.4ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/questions?user_id=1" for ::1 at 2019-04-11 12:50:15 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14
+  [1m[36mQuestion Load (1.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/questions_controller.rb:16
+Completed 200 OK in 25ms (Views: 11.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 12:50:20 -0400
+Started GET "/categories" for ::1 at 2019-04-11 12:50:20 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1292ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:50:21 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 101ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 12:53:30 -0400
+Started GET "/categories" for ::1 at 2019-04-11 12:53:30 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1564ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:53:32 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 126ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 12:56:21 -0400
+Started GET "/categories" for ::1 at 2019-04-11 12:56:21 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_boards as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1393ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:56:22 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 12:56:34 -0400
+Started GET "/categories" for ::1 at 2019-04-11 12:56:34 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1182ms (Views: 16.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:56:35 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 71ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 12:58:06 -0400
+Started OPTIONS "/categories" for ::1 at 2019-04-11 12:58:06 -0400
+Processing by ResponsesController#get_boards as HTML
+Started GET "/categories" for ::1 at 2019-04-11 12:58:06 -0400
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1382ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 12:58:07 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 132ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:00:30 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:00:30 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1346ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 13:00:31 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 88ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:03:23 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:03:23 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1440ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Completed 404 Not Found in 1448ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Started GET "/get-random/" for ::1 at 2019-04-11 13:03:25 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 73ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:03:33 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:03:33 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_boards as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1277ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 13:03:34 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 75ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:04:15 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:04:15 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1192ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 13:04:16 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 65ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:04:50 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:04:50 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1344ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 13:04:51 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 90ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 13:06:29 -0400
+Started GET "/categories" for ::1 at 2019-04-11 13:06:29 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/categories_controller.rb:12:in `index'
+Completed 200 OK in 1267ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 13:06:30 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 71ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
