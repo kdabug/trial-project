@@ -1,53 +1,72 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3000";
+const api = axios.create({
+  baseURL: "http://localhost:3000",
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("jwt")}`
+  }
+});
 
-const createCategory = async category => {
-  const respData = await axios.post(`${BASE_URL}/users/register`, category);
+const createCategory = async (user_id, category) => {
+  const respData = await api.post(`/users/${user_id}/categories`, category);
   console.log("this is create category: resp", respData);
   return respData;
 };
 
-const updateCategory = async (id, edits) => {
+const updateCategory = async (user_id, cat_id, edits) => {
   console.log("making an edit request with this data", edits);
-  const respData = await axios.put(`${BASE_URL}/planets/${id}/`, edits);
+  const respData = await api.put(
+    `/users/${user_id}/categories/${cat_id}`,
+    edits
+  );
   console.log("this is edit category: resp", respData);
   return respData;
 };
 
-const fetchCategories = async () => {
-  const respData = await axios.get(`${BASE_URL}/planets`);
+const fetchCategories = async user_id => {
+  const respData = await api.get(`/users/${user_id}/categories`);
   console.log("this is fetch category: resp", respData);
   return respData;
 };
 
-const deleteCategory = async id => {
-  const respData = await axios.delete(`${BASE_URL}/planets/${id}`);
+const deleteCategory = async (user_id, cat_id) => {
+  const respData = await api.delete(`/users/${user_id}/categories/${cat_id}`);
   console.log("this is delete category: resp", respData);
   return respData;
 };
 
-const createQuestion = async questionData => {
-  const respData = await axios.post(`${BASE_URL}/users/register`, questionData);
+const createQuestion = async (user_id, cat_id, questionData) => {
+  const respData = await api.post(
+    `/users/${user_id}/categories/${cat_id}/questions`,
+    questionData
+  );
   console.log("this is create question: resp", respData);
   return respData;
 };
 
-const updateQuestion = async (id, edits) => {
+const updateQuestion = async (user_id, cat_id, quest_id, edits) => {
   console.log("making an edit request with this data", edits);
-  const respData = await axios.put(`${BASE_URL}/planets/${id}/`, edits);
+  const respData = await api.put(
+    `/users/${user_id}/categories/${cat_id}/questions/${quest_id}`,
+    edits
+  );
   console.log("this is edit question: resp", respData);
   return respData;
 };
 
-const fetchQuestions = async () => {
-  const respData = await axios.get(`${BASE_URL}/planets`);
+const fetchQuestions = async (user_id, cat_id) => {
+  const respData = await api.get(
+    `/users/${user_id}/categories/${cat_id}/questions`
+  );
   console.log("this is fetch questions: resp", respData);
   return respData;
 };
 
-const deleteQuestion = async questionData => {
-  const respData = await axios.delete(`${BASE_URL}/planets/${questionData.id}`);
+const deleteQuestion = async (user_id, cat_id, quest_id) => {
+  const respData = await api.delete(
+    `/users/${user_id}/categories/${cat_id}/questions/${quest_id}`
+  );
   console.log("this is delete questions: resp", respData);
   return respData;
 };

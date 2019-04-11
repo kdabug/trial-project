@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { createCategory } from "../services/createCustomGameAPI";
 
-const Header = props => {
+const GameHeader = props => {
   const { show, userData } = props;
   return (
     <>
@@ -16,4 +16,4 @@ const Header = props => {
     </>
   );
 };
-export default Header;
+export default GameHeader;

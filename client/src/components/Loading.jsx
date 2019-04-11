@@ -13,8 +13,6 @@ export default props => {
             <div
               className="loading-pic-container"
               style={{
-                // top: "100px",
-                // left: "100px"
                 top: `${Math.random() * window.innerHeight}` + "px",
                 left: `${Math.random() * window.innerWidth}` + "px"
               }}
