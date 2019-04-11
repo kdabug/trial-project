@@ -8,8 +8,17 @@ Rails.application.routes.draw do
 
   get "/users/current", to: "users#current"
   resources :users
-  resources :categories
-  resources :questions
+
+  resources :categories do
+    collection do
+      get "mine"
+    end
+  end
+  resources :questions do
+    collection do
+      get "mine"
+    end
+  end
 
   # get "sessions/new"
 
