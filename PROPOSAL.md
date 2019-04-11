@@ -12,6 +12,7 @@
 - Rails(v 2.6.2)
 - Sequelize and postgres
 - HTTParty
+- react-coundown-now
 
 **major problems & solutions**
 Timers for questions. Randomly assigning bonus questions. Potential for multiplayer or online playing with other online users. Using third party api though rails.

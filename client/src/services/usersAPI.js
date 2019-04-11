@@ -27,25 +27,25 @@ const loginUser = async ({ email, password }) => {
 };
 
 const fetchUserData = async () => {
-  const respData = await api.get(`${BASE_URL}/users/current`);
+  const respData = await api.get(`/users/current`);
   console.log("this is current userData: resp", respData);
   return respData;
 };
 
 const updateUser = async (id, edits) => {
-  const respData = await api.put(`${BASE_URL}/users/${id}/`, edits);
+  const respData = await api.put(`/users/${id}/`, edits);
   console.log("this is update user: resp", respData);
   return respData;
 };
 
 const deleteUser = async id => {
-  const respData = await api.delete(`${BASE_URL}/users/${id}/`);
+  const respData = await api.delete(`/users/${id}/`);
   console.log("this is delete user: resp", respData);
   return respData;
 };
 
 const fetchUserHistory = async id => {
-  const respData = await api.get(`${BASE_URL}/games/${id}/`);
+  const respData = await api.get(`}/games/${id}/`);
   console.log("this is fetchUserCategories: resp", respData);
   return respData;
 };

@@ -56,15 +56,16 @@ class App extends Component {
     // this.restartGame = this.restartGame.bind(this);
   }
 
-  async handleLogin(e) {
-    e.preventDefault();
-    const userToken = await loginUser(this.state.loginFormData);
-    localStorage.setItem("jwt", userToken.jwt);
-    console.log("userdata from handleLogin", userData);
+  async fetchUserData() {
+    console.log(
+      "this is getting localsotragetoke",
+      localStorage.getItem("jwt")
+    );
     const userData = await fetchUserData();
+    console.log("userdata from fetchUserData", userData);
+
     this.setState({
       currentUser: userData,
-      token: userToken.jwt,
       userData: userData,
       loginFormData: {
         email: "",
@@ -74,9 +75,26 @@ class App extends Component {
     this.props.history.push(`/`);
   }
 
+  async handleLogin(e) {
+    e.preventDefault();
+    const userToken = await loginUser(this.state.loginFormData);
+    localStorage.setItem("jwt", userToken.jwt);
+    this.fetchUserData();
+    const userData = await fetchUserData();
+    console.log("userdata from handleLogin", userData);
+
+    this.setState({
+      token: userToken.jwt
+    });
+    this.props.history.push(`/`);
+  }
+
   handleLoginClick(e) {
     e.preventDefault();
-    console.log("I want to register: handleLoginClick button".toggleLogin);
+    console.log(
+      "I want to register: handleLoginClick button",
+      this.state.toggleLogin
+    );
     this.setState((prevState, newState) => ({
       toggleLogin: !prevState.toggleLogin
     }));
