@@ -7,12 +7,11 @@ class User < ApplicationRecord
 
   def to_token_payload
     {
-      sub: id,
+      id: id,
       email: email,
       username: username,
       total_score: total_score,
       avatar_id: avatar_id,
-
     }
   end
 end

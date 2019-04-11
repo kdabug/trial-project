@@ -9538,3 +9538,272 @@ Filter chain halted as :authenticate_user rendered or redirected
 Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/get-boards" for ::1 at 2019-04-11 15:15:12 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1416ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:15:14 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 83ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started OPTIONS "/categories/mine" for ::1 at 2019-04-11 15:15:15 -0400
+Started GET "/categories/mine" for ::1 at 2019-04-11 15:15:15 -0400
+Processing by CategoriesController#mine as HTML
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 50.6ms)
+
+
+  
+NoMethodError (undefined method `categories' for nil:NilClass):
+  
+app/controllers/categories_controller.rb:50:in `mine'
+Started GET "/get-boards" for ::1 at 2019-04-11 15:16:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1341ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:16:44 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 80ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started OPTIONS "/user_token" for ::1 at 2019-04-11 15:16:47 -0400
+Started POST "/user_token" for ::1 at 2019-04-11 15:16:47 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"email"=>"bob@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"bob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bob@gmail.com"], ["LIMIT", 1]]
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 201 Created in 62ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started OPTIONS "/users/show" for ::1 at 2019-04-11 15:16:47 -0400
+Started OPTIONS "/users/show" for ::1 at 2019-04-11 15:16:47 -0400
+Started GET "/users/show" for ::1 at 2019-04-11 15:16:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=show):
+  
+app/controllers/users_controller.rb:54:in `set_user'
+Started GET "/users/show" for ::1 at 2019-04-11 15:16:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=show):
+  
+app/controllers/users_controller.rb:54:in `set_user'
+Started POST "/user_token" for ::1 at 2019-04-11 15:17:57 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"email"=>"bob@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"bob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bob@gmail.com"], ["LIMIT", 1]]
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 201 Created in 59ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/show" for ::1 at 2019-04-11 15:17:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=show):
+  
+app/controllers/users_controller.rb:54:in `set_user'
+Started GET "/users/show" for ::1 at 2019-04-11 15:17:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=show):
+  
+app/controllers/users_controller.rb:54:in `set_user'
+Started GET "/users/show" for ::1 at 2019-04-11 15:17:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=show):
+  
+app/controllers/users_controller.rb:54:in `set_user'
+Started GET "/get-boards" for ::1 at 2019-04-11 15:18:00 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1326ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:18:02 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories/mine" for ::1 at 2019-04-11 15:18:03 -0400
+Processing by CategoriesController#mine as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:50
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/categories_controller.rb:52
+Completed 200 OK in 49ms (Views: 18.6ms | ActiveRecord: 10.6ms)
+
+
+Started OPTIONS "/questions/mine" for ::1 at 2019-04-11 15:18:03 -0400
+Started GET "/questions/mine" for ::1 at 2019-04-11 15:18:03 -0400
+Processing by QuestionsController#mine as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:51
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `questions' for #<User:0x00007fa165e74740>
+Did you mean?  question
+               question=
+               question_ids):
+  
+app/controllers/questions_controller.rb:51:in `mine'
+Started GET "/get-boards" for ::1 at 2019-04-11 15:18:46 -0400
+Started OPTIONS "/categories" for ::1 at 2019-04-11 15:18:46 -0400
+Processing by ResponsesController#get_boards as HTML
+Started GET "/categories" for ::1 at 2019-04-11 15:18:46 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (17.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:15
+Completed 200 OK in 21ms (Views: 3.5ms | ActiveRecord: 17.5ms)
+
+
+Started OPTIONS "/questions" for ::1 at 2019-04-11 15:18:46 -0400
+Started GET "/questions" for ::1 at 2019-04-11 15:18:46 -0400
+Processing by QuestionsController#index as HTML
+Completed 200 OK in 1330ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:16
+Started GET "/get-random/" for ::1 at 2019-04-11 15:18:47 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 1007ms (Views: 29.1ms | ActiveRecord: 10.2ms)
+
+
+Completed 200 OK in 108ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 15:18:49 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1122ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:18:50 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 108ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-11 15:18:51 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:15
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions" for ::1 at 2019-04-11 15:18:51 -0400
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (3.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:16
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 15:19:21 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2050ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:19:23 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 88ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-11 15:19:24 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:15
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions" for ::1 at 2019-04-11 15:19:24 -0400
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:16
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 15:21:18 -0400
+Started GET "/categories" for ::1 at 2019-04-11 15:21:18 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1180ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:21:19 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 115ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:15
+Completed 200 OK in 139ms (Views: 10.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/questions" for ::1 at 2019-04-11 15:21:20 -0400
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:16
+Completed 200 OK in 13ms (Views: 7.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 15:21:39 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1223ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 15:21:41 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 86ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-11 15:21:46 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (3.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:15
+Completed 200 OK in 58ms (Views: 16.2ms | ActiveRecord: 26.9ms)
+
+
+Started GET "/questions" for ::1 at 2019-04-11 15:21:46 -0400
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:16
+Completed 200 OK in 17ms (Views: 9.9ms | ActiveRecord: 4.2ms)
+
+
