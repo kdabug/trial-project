@@ -69,13 +69,15 @@ class UserProfilePage extends Component {
 
   async getUsersQuestions() {
     const userCategories = await fetchCategories(this.props.userData.id);
-    //const userQuestions = userCategories.mapawait fetchQuestions(this.props.userData.id);
+    const userQuestions = await fetchQuestions(this.props.userData.id);
+    console.log("this is userQs get userQs", userQuestions);
     this.setState(prevState => ({
       userCreated: {
-        userCategories
-        //userQuestions
+        userCategories,
+        userQuestions
       }
     }));
+    console.log("this is userQs get userCreated", this.state.userCreated);
   }
 
   async addUserCategory() {

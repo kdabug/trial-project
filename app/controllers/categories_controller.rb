@@ -22,6 +22,7 @@ class CategoriesController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @category = Category.new
+    render json: @category
   end
 
   def create
@@ -29,19 +30,23 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to user_category_path(@user, @category)
+      render json: @category
     end
   end
 
   def edit
     @user = User.find(params[:user_id])
     @category = Category.find(params[:id])
+    render json: @category
   end
 
   def update
     @user = User.find(params[:user_id])
     @category = Category.find(params[:id])
+    @category.update!(category_params)
     if @category.update_attributes(category_params)
       redirect_to user_category_path(@user, @category)
+      render json: @category
     end
   end
 
@@ -55,6 +60,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:user_id)
+    params.require(:category).permit(:user_id, :category)
   end
 end

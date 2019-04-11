@@ -11,7 +11,7 @@ const api = axios.create({
 const createCategory = async category => {
   const respData = await api.post(`/categories`, category);
   console.log("this is create category: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const updateCategory = async (user_id, cat_id, edits) => {
@@ -21,7 +21,7 @@ const updateCategory = async (user_id, cat_id, edits) => {
     edits
   );
   console.log("this is edit category: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const fetchCategories = async user_id => {
@@ -35,7 +35,7 @@ const fetchCategories = async user_id => {
 const deleteCategory = async cat_id => {
   const respData = await api.delete(`/categories/${cat_id}`);
   console.log("this is delete category: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const createQuestion = async (user_id, cat_id, questionData) => {
@@ -44,7 +44,7 @@ const createQuestion = async (user_id, cat_id, questionData) => {
     questionData
   );
   console.log("this is create question: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const updateQuestion = async (user_id, cat_id, quest_id, edits) => {
@@ -54,15 +54,15 @@ const updateQuestion = async (user_id, cat_id, quest_id, edits) => {
     edits
   );
   console.log("this is edit question: resp", respData);
-  return respData;
+  return respData.data;
 };
 
-const fetchQuestions = async category_id => {
+const fetchQuestions = async user_id => {
   const respData = await api.get(`/questions`, {
-    params: { category_id: category_id }
+    params: { user_id: user_id }
   });
   console.log("this is fetch questions: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const deleteQuestion = async (user_id, cat_id, quest_id) => {
@@ -70,7 +70,7 @@ const deleteQuestion = async (user_id, cat_id, quest_id) => {
     `/users/${user_id}/categories/${cat_id}/questions/${quest_id}`
   );
   console.log("this is delete questions: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 export {

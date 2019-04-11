@@ -11,51 +11,64 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user, only: [:create, :update, :destroy]
 
   def index
+    @user = User.find(params[:user_id])
+    @questions = Question.where(user_id: @user.id)
+    render json: @questions
+  end
+
+  def index_by_category
     @category = Category.find(params[:category_id])
     @questions = Question.where(category_id: @category.id)
+    render json: @questions
   end
 
   def show
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
+    render json: @question
   end
 
   def new
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question = Question.new
+    render json: @question
   end
 
   def create
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question = Question.new(question_params)
+
     if @question.save
-      redirect_to category_question_path(@category, @question)
+      render json: @question
+      redirect_to user_question_path(@user, @question)
     end
   end
 
   def edit
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
+    render json: @question
   end
 
   def update
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
+    @question.update!(question_params)
     if @question.update_attributes(question_params)
-      redirect_to category_question_path(@category, @question)
+      redirect_to user_question_path(@user, @question)
     end
+    render json: @question
   end
 
   def destroy
     @question = Question.find(params[:id])
-    @category = Category.find(params[:category_id])
+    @user = User.find(params[:user_id])
     @question.destroy
-    redirect_to category_questions_path(@category)
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:title, :body, :category_id)
+    params.require(:question).permit(:question, :answer, :user_id, :category_id)
   end
 end
