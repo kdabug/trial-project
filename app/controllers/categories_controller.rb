@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @categories = Category.where(user_id: @user.id)
+    render json: @categories
   end
 
   def show

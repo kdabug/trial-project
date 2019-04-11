@@ -24,10 +24,12 @@ const updateCategory = async (user_id, cat_id, edits) => {
   return respData;
 };
 
-const fetchCategories = async () => {
-  const respData = await api.get(`/categories`);
+const fetchCategories = async user_id => {
+  const respData = await api.get(`/categories`, {
+    params: { user_id: user_id }
+  });
   console.log("this is fetch category: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const deleteCategory = async cat_id => {
@@ -55,8 +57,10 @@ const updateQuestion = async (user_id, cat_id, quest_id, edits) => {
   return respData;
 };
 
-const fetchQuestions = async user_id => {
-  const respData = await api.get(`/users/${user_id}/questions`);
+const fetchQuestions = async category_id => {
+  const respData = await api.get(`/questions`, {
+    params: { category_id: category_id }
+  });
   console.log("this is fetch questions: resp", respData);
   return respData;
 };
