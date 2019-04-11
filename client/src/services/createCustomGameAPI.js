@@ -8,6 +8,8 @@ const api = axios.create({
   }
 });
 
+////////CATEGORIES
+
 const createCategory = async (user_id, category) => {
   const respData = await api.post(`/categories`, category);
   console.log("this is create category: resp", respData);
@@ -38,21 +40,16 @@ const deleteCategory = async cat_id => {
   return respData.data;
 };
 
-const createQuestion = async (user_id, cat_id, questionData) => {
-  const respData = await api.post(
-    `/users/${user_id}/categories/${cat_id}/questions`,
-    questionData
-  );
+/////QUESTIONS
+const createQuestion = async questionData => {
+  const respData = await api.post(`/questions`, questionData);
   console.log("this is create question: resp", respData);
   return respData.data;
 };
 
-const updateQuestion = async (user_id, cat_id, quest_id, edits) => {
+const updateQuestion = async (quest_id, edits) => {
   console.log("making an edit request with this data", edits);
-  const respData = await api.put(
-    `/users/${user_id}/categories/${cat_id}/questions/${quest_id}`,
-    edits
-  );
+  const respData = await api.put(`/questions/${quest_id}`, edits);
   console.log("this is edit question: resp", respData);
   return respData.data;
 };
@@ -65,10 +62,8 @@ const fetchQuestions = async user_id => {
   return respData.data;
 };
 
-const deleteQuestion = async (user_id, cat_id, quest_id) => {
-  const respData = await api.delete(
-    `/users/${user_id}/categories/${cat_id}/questions/${quest_id}`
-  );
+const deleteQuestion = async id => {
+  const respData = await api.delete(`/questions/${id}`);
   console.log("this is delete questions: resp", respData);
   return respData.data;
 };

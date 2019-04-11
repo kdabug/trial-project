@@ -21,6 +21,7 @@ export default props => (
           onChange={props.onChange}
           placeholder="Jeopardy"
         />
+        <input type="hidden" value={props.categoryId} name="category_id" />
         <button type="submit" onClick={props.onSubmit}>
           Submit
         </button>

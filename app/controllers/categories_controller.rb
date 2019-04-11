@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :update, :destroy]
   before_action :authenticate_user, only: [:create, :update, :destroy]
   # create_table "categories", force: :cascade do |t|
   #     t.string "category"
@@ -9,43 +10,53 @@ class CategoriesController < ApplicationController
   #   end
 
   def index
-    @user = User.find(params[:user_id])
-    @categories = Category.where(user_id: @user.id)
+    @categories = Category.all
+
     render json: @categories
   end
 
+  # GET /categories/1
   def show
-    @user = User.find(params[:user_id])
-    @category = Category.find(params[:id])
-  end
-
-  def create
-    @category = Category.new(category_params)
-    if @category.save
-      render json: @category
-    end
-  end
-
-  def edit
-    @category = Category.find(params[:id])
     render json: @category
   end
 
-  def update
-    @category = Category.find(params[:id])
-    @category.update!(category_params)
-    if @category.update_attributes(category_params)
-      redirect_to user_category_path(@user, @category)
-      render json: @category
+  # POST /categories
+  def create
+    @category = current_user.categories.new(category_params)
+
+    if @category.save
+      render json: @category, status: :created, location: @category
+    else
+      render json: @category.errors, status: :unprocessable_entity
     end
   end
 
+  # PATCH/PUT /categories/1
+  def update
+    if @category.update(category_params)
+      render json: @category
+    else
+      render json: @category.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /categories/1
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
   end
 
+  # GET /categories/mine
+  def mine
+    @categories = current_user.categories
+
+    render json: @categories
+  end
+
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:user_id, :category)

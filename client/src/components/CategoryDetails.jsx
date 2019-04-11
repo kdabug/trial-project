@@ -28,21 +28,18 @@ export default class CategoryDetails extends Component {
       handleDeleteCategory,
       handleDeleteQuestion,
       handleChange,
-      handleQuestionSubmit
+      handleQuestionSubmit,
+      answer,
+      question
     } = this.props;
     const { showMore, showAdd } = this.state;
     const clues = questions.filter(el => el.category_id === categoryData.id);
+    //console.log("all the categoryDetails", categoryData, questions);
     return (
       <div className="category-detail-container">
         <h2>{categoryData.category}</h2>
         <button className="pretty-button" onClick={this.handleShowMoreButton}>
           {showMore ? "Show Less" : "Show Clues"}
-        </button>
-        <button
-          className="pretty-button"
-          onClick={this.handleAddQuestionButton}
-        >
-          {showAdd ? "Add Question" : "Hide Add Question Form"}
         </button>
         <button
           className="pretty-button"
@@ -54,28 +51,35 @@ export default class CategoryDetails extends Component {
           {showAdd && (
             <>
               <CreateQuestion
+                categoryId={categoryData.id}
                 onChange={handleChange}
                 onSubmit={handleQuestionSubmit}
-                answer={this.props.userInputData.answer}
-                question={this.props.userInputData.question}
+                answer={answer}
+                question={question}
               />
             </>
           )}
-          {questions && (
+          {questions && showMore && (
             <>
               {clues.map((clue, i) => (
                 <div className="more-details" key={i}>
-                  <h3>Answer: {clue}</h3>
-                  <h3>Question: {clue.id}</h3>
+                  <h3>Answer: {clue.question}</h3>
+                  <h3>Question: {clue.answer}</h3>
                   <button
                     className="question-button"
                     key={i}
-                    onClick={e => handleDeleteQuestion(e, clue)}
+                    onClick={e => handleDeleteQuestion(e, clue.id)}
                   >
                     Delete Question
                   </button>
                 </div>
               ))}
+              <button
+                className="pretty-button"
+                onClick={this.handleAddQuestionButton}
+              >
+                {showAdd ? "Hide Form" : "Add Question"}
+              </button>
             </>
           )}
         </>
