@@ -5,6 +5,7 @@ import Loading from "./Loading";
 
 const TitlePage = props => {
   const { gameData, userdata, currentUser } = props;
+  console.log("this is titlepage props", props);
   return (
     <div className="layer">
       <div className="welcome-container">
@@ -24,7 +25,7 @@ const TitlePage = props => {
                   className="title-button"
                   onClick={() =>
                     props.history.push(
-                      `/user/${userdata.id}/username/${userdata.name}`
+                      `/user/${userdata.id}/username/${userdata.username}`
                     )
                   }
                 >

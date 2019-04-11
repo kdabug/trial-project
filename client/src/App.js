@@ -195,6 +195,7 @@ class App extends Component {
   async componentDidMount() {
     await this.startGameData();
     const checkUser = localStorage.getItem("jwt");
+    console.log("this is app.js cdm checkuser", checkUser);
     if (checkUser) {
       const user = decode(checkUser);
       this.setState((prevState, newState) => ({

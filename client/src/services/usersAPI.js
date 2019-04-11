@@ -27,7 +27,8 @@ const loginUser = async ({ email, password }) => {
 };
 
 const fetchUserData = async () => {
-  const respData = await api.get(`/users/current`);
+  console.log("this is fetch user data api", api);
+  const respData = await api.get(`/users/show`);
   console.log("this is current userData: resp", respData);
   return respData;
 };

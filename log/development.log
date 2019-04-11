@@ -4706,3 +4706,65 @@ Processing by ResponsesController#get_random as HTML
 Completed 200 OK in 87ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/get-boards" for ::1 at 2019-04-11 08:57:01 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1485ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 08:57:02 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 101ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 08:57:05 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1698ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 08:57:07 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 08:57:16 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1319ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 08:57:18 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 71ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 08:59:42 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1225ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 08:59:43 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 138ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 09:01:21 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1838ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 09:01:23 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 105ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-11 09:02:15 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1344ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-11 09:02:17 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 112ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
