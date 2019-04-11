@@ -7,66 +7,58 @@ class QuestionsController < ApplicationController
   #     t.bigint "user_id"
   #     t.index ["user_id"], name: "index_questions_on_user_id"
   #   end
-
+  before_action :set_question, only: [:show, :update, :destroy]
   before_action :authenticate_user, only: [:create, :update, :destroy]
 
   def index
-    @user = User.find(params[:user_id])
-    @questions = Question.where(user_id: @user.id)
+    @questions = Question.all
+
     render json: @questions
   end
 
-  def index_by_category
-    @category = Category.find(params[:category_id])
-    @questions = Question.where(category_id: @category.id)
-    render json: @questions
-  end
-
+  # GET /questions/1
   def show
-    @user = User.find(params[:user_id])
-    @question = Question.find(params[:id])
     render json: @question
   end
 
-  def new
-    @user = User.find(params[:user_id])
-    @question = Question.new
-    render json: @question
-  end
-
+  # POST /questions
   def create
-    @user = User.find(params[:user_id])
-    @question = Question.new(question_params)
+    @question = current_user.questions.new(question_params)
 
     if @question.save
-      render json: @question
-      redirect_to user_question_path(@user, @question)
+      render json: @question, status: :created, location: @question
+    else
+      render json: @question.errors, status: :unprocessable_entity
     end
   end
 
-  def edit
-    @user = User.find(params[:user_id])
-    @question = Question.find(params[:id])
-    render json: @question
-  end
-
+  # PATCH/PUT /questions/1
   def update
-    @user = User.find(params[:user_id])
-    @question = Question.find(params[:id])
-    @question.update!(question_params)
-    if @question.update_attributes(question_params)
-      redirect_to user_question_path(@user, @question)
+    if @question.update(question_params)
+      render json: @question
+    else
+      render json: @question.errors, status: :unprocessable_entity
     end
-    render json: @question
   end
 
+  # DELETE /questions/1
   def destroy
-    @question = Question.find(params[:id])
-    @user = User.find(params[:user_id])
     @question.destroy
   end
 
+  # GET /questions/mine
+  def mine
+    @questions = current_user.questions
+
+    render json: @questions
+  end
+
   private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
   def question_params
     params.require(:question).permit(:question, :answer, :user_id, :category_id)
