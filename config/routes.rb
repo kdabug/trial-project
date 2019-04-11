@@ -7,15 +7,9 @@ Rails.application.routes.draw do
   post "/user_token" => "user_token#create"
 
   get "/users/current", to: "users#current"
-  resources :users do
-    resources :categories do
-      resources :questions
-    end
-  end
-
-  resources :users do
-    resources :questions
-  end
+  resources :users
+  resources :categories
+  resources :questions
 
   # get "sessions/new"
 
