@@ -23,15 +23,17 @@ class RenderGame extends Component {
       roundOne: "",
       roundTwo: "",
       gameData: this.props.gameData,
-      userInputData: {
-        answer: ""
+      userInput: {
+        answer: "",
+        wager: 0
       },
-      currentScore: 0
+      currentScore: 0,
+      compResponse: ""
     };
     this.handleAskQuestion = this.handleAskQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTileClick = this.handleTileClick.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleTileClick = this.handleTileClick.bind(this);
     this.backToBoard = this.backToBoard.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.finalTrial = this.finalTrial.bind(this);
@@ -41,18 +43,19 @@ class RenderGame extends Component {
   handleChange(e) {
     const { name, value } = e.target;
     this.setState(prevState => ({
-      userInputData: {
-        ...prevState.userInputData,
+      userInput: {
+        ...prevState.userInput,
         [name]: value
       }
     }));
   }
-  handleSubmit(e) {
-    e.preventDefault();
-  }
-  handleTileClick(e) {
-    e.preventDefault();
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  // }
+  // handleTileClick(e) {
+  //   e.preventDefault();
+
+  // }
   handleAskQuestion(e, clue) {
     e.preventDefault();
     const { id } = e.target;
@@ -66,13 +69,27 @@ class RenderGame extends Component {
   }
   checkAnswer(e) {
     e.preventDefault();
+    const userAnswer = this.state.userInput.answer.toLowerCase();
+    const right = userAnswer.includes(
+      this.state.currentClue.answer.toLowerCase()
+    );
+    if (right) {
+      this.setState(prevState => ({
+        right: true
+      }));
+    } else {
+      this.setState(prevState => ({
+        right: false
+      }));
+    }
   }
   backToBoard(e) {
     e.preventDefault();
     this.setState(prevState => ({
       toggleShowQuestion: false,
       toggleAnswered: false,
-      toggleFinalTrial: false
+      toggleFinalTrial: false,
+      toggleBoard: true
     }));
   }
   finalTrial() {
@@ -126,7 +143,7 @@ class RenderGame extends Component {
               timer={this.state.timer}
               onSubmit={this.checkAnswer}
               onChange={this.handleChange}
-              answer={this.state.userInputData.answer}
+              answer={this.state.userInput.answer}
             />
           )}
           <>
@@ -135,7 +152,7 @@ class RenderGame extends Component {
                 value={this.state.wager}
                 onSubmit={this.sendToFinalQuestion}
                 onChange={this.handleChange}
-                currentScore={this.state.userInputData.currentScore}
+                currentScore={this.state.userInput.currentScore}
               />
             )}
           </>
@@ -143,6 +160,7 @@ class RenderGame extends Component {
         <>
           {this.state.toggleAnswered && (
             <RightOrWrong
+              right={this.state.compResponse}
               score={this.state.currentClue}
               onSubmit={this.backToBoard}
               answer={this.state.currentClue.answer}
@@ -157,13 +175,13 @@ class RenderGame extends Component {
                   <CreateBoard
                     questionData={this.state.roundOne}
                     handleAskQuestion={this.handleAskQuestion}
-                    round={1}
+                    round={2}
                   />
                 ) : (
                   <CreateBoard
                     questionData={this.state.roundTwo}
                     handleAskQuestion={this.handleAskQuestion}
-                    round={2}
+                    round={1}
                   />
                 )}
               </>

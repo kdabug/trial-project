@@ -9,7 +9,7 @@ const GameHeader = props => {
       {show && (
         <div className="header">
           <nav>
-            <Link to="/">Trial</Link>
+            <Link to="/">TRIAL</Link>
           </nav>
         </div>
       )}

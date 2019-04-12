@@ -14528,3 +14528,1178 @@ Processing by ResponsesController#get_random as HTML
 Completed 200 OK in 106ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/get-boards" for ::1 at 2019-04-12 02:00:22 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2044ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:00:24 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:01:32 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1952ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:01:34 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 99ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 02:02:14 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 76ms (Views: 7.0ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/questions?user_id=3" for ::1 at 2019-04-12 02:02:14 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-12 02:02:28 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/user_token"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/user_token" for ::1 at 2019-04-12 02:02:34 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/user_token"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/user_token" for ::1 at 2019-04-12 02:02:44 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/user_token"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/get-boards" for ::1 at 2019-04-12 02:03:12 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2352ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:03:14 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:03:20 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1790ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:03:22 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/login" for ::1 at 2019-04-12 02:03:25 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/user/login"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/user/login" for ::1 at 2019-04-12 02:03:35 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/user/login"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/get-boards" for ::1 at 2019-04-12 02:04:32 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1856ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:04:34 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:04:37 -0400
+  
+SyntaxError (/Users/Gertrude/wdi/projects/trial-project/trial-app/app/controllers/users_controller.rb:40: syntax error, unexpected tLABEL
+      render json: nothing: true, status: 401
+                   ^~~~~~~~
+/Users/Gertrude/wdi/projects/trial-project/trial-app/app/controllers/users_controller.rb:40: Can't assign to true
+...     render json: nothing: true, status: 401
+...                           ^~~~):
+  
+app/controllers/users_controller.rb:40: syntax error, unexpected tLABEL
+app/controllers/users_controller.rb:40: Can't assign to true
+Started GET "/get-boards" for ::1 at 2019-04-12 02:07:43 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1868ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:07:45 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 102ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:07:48 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"auth"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.9ms)
+
+
+  
+NoMethodError (undefined method `find_from_credentials' for #<Class:0x00007f93ce0825f0>
+Did you mean?  find_or_create_by):
+  
+app/controllers/users_controller.rb:48:in `login'
+Started GET "/get-boards" for ::1 at 2019-04-12 02:12:53 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1919ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:12:55 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:12:59 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"auth"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:13:30 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"auth"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:14:31 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2077ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:14:33 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:14:37 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"params"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:20:28 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1947ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:20:30 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:20:37 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"params"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (44.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (228.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trial-app_development"[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (246.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trial-app_test"[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (406.8ms)[0m  [1m[35mCREATE DATABASE "trial-app_development" ENCODING = 'unicode'[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (463.0ms)[0m  [1m[35mCREATE DATABASE "trial-app_test" ENCODING = 'unicode'[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "score" integer, "created_by_user" boolean DEFAULT FALSE, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint)[0m
+  ↳ db/schema.rb:26
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_user_id" ON "games"  ("user_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "question" character varying, "answer" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint, "category_id" bigint)[0m
+  ↳ db/schema.rb:35
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_questions_on_category_id" ON "questions"  ("category_id")[0m
+  ↳ db/schema.rb:35
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_questions_on_user_id" ON "questions"  ("user_id")[0m
+  ↳ db/schema.rb:35
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "total_score" integer DEFAULT 0, "avatar_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:56
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_de9e6ea7f7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:57
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "questions" ADD CONSTRAINT "fk_rails_d2f8aeda0b"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/schema.rb:58
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "questions" ADD CONSTRAINT "fk_rails_047ab75908"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:59
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190411141054)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190407214255),
+(20190407214711),
+(20190409163914),
+(20190407222145),
+(20190407220919),
+(20190407214837),
+(20190407214234);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-12 06:21:16.308486"], ["updated_at", "2019-04-12 06:21:16.308486"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "score" integer, "created_by_user" boolean DEFAULT FALSE, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint)[0m
+  ↳ db/schema.rb:26
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_user_id" ON "games"  ("user_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "question" character varying, "answer" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" bigint, "category_id" bigint)[0m
+  ↳ db/schema.rb:35
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_questions_on_category_id" ON "questions"  ("category_id")[0m
+  ↳ db/schema.rb:35
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_questions_on_user_id" ON "questions"  ("user_id")[0m
+  ↳ db/schema.rb:35
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "total_score" integer DEFAULT 0, "avatar_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:56
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_de9e6ea7f7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:57
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "questions" ADD CONSTRAINT "fk_rails_d2f8aeda0b"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/schema.rb:58
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "questions" ADD CONSTRAINT "fk_rails_047ab75908"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:59
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190411141054)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190407214255),
+(20190407214711),
+(20190409163914),
+(20190407222145),
+(20190407220919),
+(20190407214837),
+(20190407214234);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-12 06:21:16.548797"], ["updated_at", "2019-04-12 06:21:16.548797"]]
+  ↳ db/schema.rb:13
+  [1m[35m (21.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-04-12 06:21:16.573746"], ["key", "environment"]]
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "avatar_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "bob"], ["email", "bob@gmail.com"], ["password_digest", "$2a$10$RXlJueGwnYUk0C1b48wlC.bqzpbAO9rIfuaww2IIWzsW9W.orOcDW"], ["avatar_id", 4], ["created_at", "2019-04-12 06:21:16.701120"], ["updated_at", "2019-04-12 06:21:16.701120"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "starts with a tick"], ["created_at", "2019-04-12 06:21:16.767720"], ["updated_at", "2019-04-12 06:21:16.767720"], ["user_id", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (39.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "My 6th gr. yr"], ["created_at", "2019-04-12 06:21:16.810112"], ["updated_at", "2019-04-12 06:21:16.810112"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "drama llama mama"], ["created_at", "2019-04-12 06:21:16.811453"], ["updated_at", "2019-04-12 06:21:16.811453"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "all questions end with an arrrr"], ["created_at", "2019-04-12 06:21:16.812357"], ["updated_at", "2019-04-12 06:21:16.812357"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "gypsy lyfe"], ["created_at", "2019-04-12 06:21:16.813183"], ["updated_at", "2019-04-12 06:21:16.813183"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "starts with a tick"], ["created_at", "2019-04-12 06:21:16.814020"], ["updated_at", "2019-04-12 06:21:16.814020"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "my borderline-unhealthy obsessions"], ["created_at", "2019-04-12 06:21:16.814848"], ["updated_at", "2019-04-12 06:21:16.814848"], ["user_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (32.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (1.0ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "an ailment"], ["answer", "tourettes"], ["created_at", "2019-04-12 06:21:16.854494"], ["updated_at", "2019-04-12 06:21:16.854494"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "pure blood?"], ["answer", "a tick"], ["created_at", "2019-04-12 06:21:16.856591"], ["updated_at", "2019-04-12 06:21:16.856591"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "time management"], ["answer", "clock"], ["created_at", "2019-04-12 06:21:16.857615"], ["updated_at", "2019-04-12 06:21:16.857615"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "getting angry"], ["answer", "ticked off"], ["created_at", "2019-04-12 06:21:16.858558"], ["updated_at", "2019-04-12 06:21:16.858558"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "invest in stocks"], ["answer", "ticker symbol"], ["created_at", "2019-04-12 06:21:16.859499"], ["updated_at", "2019-04-12 06:21:16.859499"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "ticked something off of this list"], ["answer", "to-do"], ["created_at", "2019-04-12 06:21:16.860436"], ["updated_at", "2019-04-12 06:21:16.860436"], ["user_id", 1], ["category_id", 1]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+Started GET "/get-boards" for ::1 at 2019-04-12 02:22:32 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1807ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:22:34 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:23:34 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1954ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:23:36 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 95ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:24:39 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1844ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:24:41 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:25:38 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1970ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:25:40 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-04-12 02:26:45 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "avatar_id"=>"4"}}
+Unpermitted parameter: :avatar_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:40
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "kdabug12"], ["email", "mills.ma12@gmail.com"], ["password_digest", "$2a$10$PH.tkKw.OH.2m.cenQOBwuIh4DmGlFMjV255cDTDOfq6H8dqJKfpq"], ["created_at", "2019-04-12 06:26:45.428123"], ["updated_at", "2019-04-12 06:26:45.428123"]]
+  ↳ app/controllers/users_controller.rb:40
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:40
+Completed 500 Internal Server Error in 206ms (ActiveRecord: 9.1ms)
+
+
+  
+NameError (undefined local variable or method `user_data' for #<UsersController:0x00007f9941d0d6f8>
+Did you mean?  user_path
+               users_path):
+  
+app/controllers/users_controller.rb:41:in `create'
+Started POST "/users/login" for ::1 at 2019-04-12 02:30:09 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"params"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:33:02 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1999ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:33:04 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:33:12 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"params"=>{"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]"}, "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:33:48 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1708ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:33:50 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 82ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:33:52 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1981ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:33:54 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 109ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:34:06 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 2.4ms)
+
+
+  
+NameError (undefined local variable or method `id' for #<UsersController:0x00007fa286b59390>):
+  
+app/controllers/users_controller.rb:16:in `gen_token'
+app/controllers/users_controller.rb:55:in `login'
+Started GET "/get-boards" for ::1 at 2019-04-12 02:37:14 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1978ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:37:16 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 117ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:37:28 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 72ms (Views: 0.6ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:37:28 -0400
+Processing by UsersController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:39:28 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1957ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:39:29 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:39:33 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1911ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:39:35 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:39:36 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2203ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:39:38 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 99ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:40:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1971ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:40:45 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 83ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:41:30 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1856ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:41:31 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 120ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:41:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1867ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:41:44 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:41:51 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 60ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:41:51 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:43:55 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1699ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:43:56 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:44:07 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2463ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:44:10 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:44:13 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 63ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:44:13 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:46:01 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2144ms (Views: 12.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:46:04 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:46:14 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2133ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:46:16 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 113ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:46:19 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 61ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:46:19 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:46:34 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2107ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:46:36 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:47:07 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1812ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:47:09 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:47:14 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 63ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:47:14 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:52:25 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1842ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:52:26 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 86ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:52:33 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1996ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:52:35 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 87ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:52:38 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 62ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:52:38 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:54:11 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1919ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:54:13 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 109ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:54:19 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2043ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:54:21 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 84ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:54:24 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 61ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:54:24 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:54:46 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1801ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:54:47 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:54:57 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1993ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:54:59 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 89ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:55:09 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1926ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:55:11 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 103ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:55:22 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2167ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:55:24 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 89ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for ::1 at 2019-04-12 02:55:26 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"mills.ma12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"mills.ma12@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mills.ma12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19
+Completed 200 OK in 61ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2019-04-12 02:55:26 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:56:46 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2316ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:56:48 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 90ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:56:55 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1891ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:56:57 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:58:09 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2160ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:58:11 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 02:58:25 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2199ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 02:58:28 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 02:58:35 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 19ms (Views: 0.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 02:58:35 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (41.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 46ms (Views: 1.0ms | ActiveRecord: 42.6ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:03:49 -0400
+Started GET "/categories" for ::1 at 2019-04-12 03:03:49 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 2022ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:03:52 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 112ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:16:45 -0400
+Started GET "/categories" for ::1 at 2019-04-12 03:16:45 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 2029ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:16:48 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 96ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:20:29 -0400
+Processing by ResponsesController#get_boards as HTML
+Started GET "/categories" for ::1 at 2019-04-12 03:20:29 -0400
+Processing by CategoriesController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1957ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:20:31 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 109ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:25:43 -0400
+Started GET "/categories" for ::1 at 2019-04-12 03:25:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1866ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:25:45 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+

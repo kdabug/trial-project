@@ -12,20 +12,19 @@ const registerUser = async registerData => {
 };
 
 const loginUser = async ({ email, password }) => {
-  const resp = await axios.post(`${BASE_URL}/user_token`, {
-    auth: {
-      email,
-      password
-    }
+  const resp = await axios.post(`${BASE_URL}/users/login`, {
+    email,
+    password
   });
   const data = resp.data;
-  updateToken(resp.data.jwt);
-  console.log("this is login resp data", data);
+  await updateToken(data.token);
+  //const setToken = localStorage.setItem("token", data.token);
+  console.log("this is login resp data", data.token);
   return data;
 };
 
 const verifyToken = async () => {
-  const token = localStorage.getItem("jwt");
+  const token = localStorage.getItem("token");
   if (token == null) {
     return false;
   } else {

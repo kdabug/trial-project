@@ -60,7 +60,7 @@ class App extends Component {
   async fetchUserData() {
     console.log(
       "this is getting localsotragetoke",
-      localStorage.getItem("jwt")
+      localStorage.getItem("token")
     );
     const userData = await fetchUserData();
     console.log("userdata from fetchUserData", userData);
@@ -78,12 +78,10 @@ class App extends Component {
 
   async handleLogin(e) {
     e.preventDefault();
-    const userToken = await loginUser(this.state.loginFormData);
-    localStorage.setItem("jwt", userToken.jwt);
-    // const userData = await fetchUserData();
-    // console.log("userdata from handleLogin", userData);
+    const userData = await loginUser(this.state.loginFormData);
+
     this.setState({
-      token: userToken.jwt
+      userData: userData.user
     });
     this.fetchUserData();
     this.props.history.push(`/`);
@@ -104,8 +102,8 @@ class App extends Component {
     e.preventDefault();
     const userData = await registerUser(this.state.registerFormData);
     this.setState((prevState, newState) => ({
-      currentUser: userData.username,
-      userData: userData,
+      currentUser: userData.user.username,
+      userData: userData.user,
       token: userData.token,
       registerFormData: {
         username: "",
@@ -114,7 +112,7 @@ class App extends Component {
         avatar_id: ""
       }
     }));
-    localStorage.setItem("jwt", userData.token);
+    localStorage.setItem("token", userData.token);
     this.props.history.push(`/`);
   }
 
@@ -135,7 +133,7 @@ class App extends Component {
   }
 
   async handleLogout() {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("token");
     this.setState({
       currentUser: null,
       toggleLogin: true
@@ -194,7 +192,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.startGameData();
-    const checkUser = localStorage.getItem("jwt");
+    const checkUser = localStorage.getItem("token");
     const currentUser = await verifyToken();
     console.log("this is app.js cdm checkuser", checkUser);
     if (checkUser) {

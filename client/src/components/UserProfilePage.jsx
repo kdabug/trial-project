@@ -138,7 +138,7 @@ class UserProfilePage extends Component {
   }
 
   async componentDidMount() {
-    const checkUser = await localStorage.getItem("jwt");
+    const checkUser = await localStorage.getItem("token");
     if (checkUser) {
       const user = decode(checkUser);
       console.log(
@@ -153,76 +153,74 @@ class UserProfilePage extends Component {
     return (
       <>
         <div className="user-profile">
-          <div className="user-container">
-            <div className="avatar-username">
-              <div
-                className={`avatar-${this.props.userData.avatar}` || "avatar-1"}
-              />
-              <h2>{this.props.userData.username}</h2>
-            </div>
-            <p>Email: {this.props.userData.email}</p>
-            <div className="button-container">
-              <button
-                className="user-button"
-                onClick={() =>
-                  this.props.history.push(
-                    `/user/${this.props.match.params.id}/edit/`
-                  )
-                }
-              >
-                Edit User
-              </button>
-              <button className="user-button" onClick={this.handleShowHistory}>
-                Show Game History
-              </button>
-              <button className="user-button" onClick={this.toggleAddCategory}>
-                Create Custom Category
-              </button>
-              <button className="user-button" onClick={this.handleDeleteUser}>
-                Delete User
-              </button>
-            </div>
-            {this.state.userCreated.userQuestions && (
-              <div className="user-categories-container">
-                <h1>Your Categories:</h1>
-                {this.state.userCreated.userCategories.map((category, i) => (
-                  <>
-                    <CategoryDetails
-                      question={this.state.userInput.question}
-                      answer={this.state.userInput.answer}
-                      categoryData={category}
-                      questions={this.state.userCreated.userQuestions}
-                      handleChange={this.handleChange}
-                      handleQuestionSubmit={this.handleQuestionSubmit}
-                      handleDeleteCategory={this.handleDeleteCategoy}
-                      handleDeleteQuestion={this.handleDeleteQuestion}
-                    />
-                  </>
-                ))}
-              </div>
-            )}
-            {this.state.toggleShowHistory && (
-              <div className="game-history-container">
-                <h1>Game History:</h1>
+          <div className="avatar-username">
+            <div
+              className={`avatar-${this.props.userData.avatar}` || "avatar-1"}
+            />
+            <h2>{this.props.userData.username}</h2>
+          </div>
+          <p>Email: {this.props.userData.email}</p>
+          <div className="button-container">
+            <button
+              className="user-button"
+              onClick={() =>
+                this.props.history.push(
+                  `/user/${this.props.match.params.id}/edit/`
+                )
+              }
+            >
+              Edit User
+            </button>
+            <button className="user-button" onClick={this.handleShowHistory}>
+              Show Game History
+            </button>
+            <button className="user-button" onClick={this.toggleAddCategory}>
+              Create Custom Category
+            </button>
+            <button className="user-button" onClick={this.handleDeleteUser}>
+              Delete User
+            </button>
+          </div>
+          {this.state.userCreated.userQuestions && (
+            <div className="user-categories-container">
+              <h1>Your Categories:</h1>
+              {this.state.userCreated.userCategories.map((category, i) => (
                 <>
-                  <DisplayGameHistory />
-                </>
-              </div>
-            )}
-
-            {this.state.showAdd && (
-              <div className="create-category-container">
-                <h1>Add Category:</h1>
-                <>
-                  <CreateCategory
-                    onSubmit={this.handleCategorySubmit}
-                    onChange={this.handleChange}
-                    category={this.state.userInput.category}
+                  <CategoryDetails
+                    question={this.state.userInput.question}
+                    answer={this.state.userInput.answer}
+                    categoryData={category}
+                    questions={this.state.userCreated.userQuestions}
+                    handleChange={this.handleChange}
+                    handleQuestionSubmit={this.handleQuestionSubmit}
+                    handleDeleteCategory={this.handleDeleteCategoy}
+                    handleDeleteQuestion={this.handleDeleteQuestion}
                   />
                 </>
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          )}
+          {this.state.toggleShowHistory && (
+            <div className="game-history-container">
+              <h1>Game History:</h1>
+              <>
+                <DisplayGameHistory />
+              </>
+            </div>
+          )}
+
+          {this.state.showAdd && (
+            <div className="create-category-container">
+              <h1>Add Category:</h1>
+              <>
+                <CreateCategory
+                  onSubmit={this.handleCategorySubmit}
+                  onChange={this.handleChange}
+                  category={this.state.userInput.category}
+                />
+              </>
+            </div>
+          )}
         </div>
       </>
     );

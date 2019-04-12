@@ -12,15 +12,18 @@ class UsersController < ApplicationController
   #before_action :authenticate_user, except: [:new]
   skip_before_action :ensure_signed_in, only: [:create, :login]
 
-  def gen_token(user_id)
-    payload = { id: user_id }
+  def gen_token(user)
+    payload = { id: user.id,
+               email: user.email,
+               username: user.username,
+               total_score: user.total_score,
+               avatar_id: user.avatar_id }
     JWT.encode(payload, Rails.application.secrets.secret_key_base)
   end
 
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -35,9 +38,9 @@ class UsersController < ApplicationController
 
     if new_user.valid?
       new_user.save!
-      render json: { user: user_data, token: gen_token(new_user.id) }
+      render json: { user: new_user, token: gen_token(new_user) }
     else
-      render json: nothing: true, status: 401
+      render nothing: true, status: 401
     end
   end
 
@@ -45,11 +48,11 @@ class UsersController < ApplicationController
     email = params[:email]
     password = params[:password]
 
-    user = User.find_from_credentials email, password
+    user = User.find_from_credentials(email, password)
     if user.nil?
       render nothing: true, status: 401
-    else 
-      render json: {user: user, token: gen_token(user.id)}
+    else
+      render json: { user: user, token: gen_token(user) }
     end
   end
 

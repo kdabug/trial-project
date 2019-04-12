@@ -62,20 +62,22 @@ export default props => {
               )}
             </div>
           </div>
-          <label htmlFor="avatar">Choose your rat: </label>
-          {eyeAvs &&
-            eyeAvs.map((el, i) => (
-              <input
-                type="textarea"
-                className={`avatar-${el.id}`}
-                name="avatar_id"
-                key={el.id}
-                value={el.id}
-                onChange={onChange}
-                onClick={onChange}
-                readonly="readonly"
-              />
-            ))}
+          <label htmlFor="avatar">Pick an eye: </label>
+          <div className="eye-container">
+            {eyeAvs &&
+              eyeAvs.map((el, i) => (
+                <input
+                  type="textarea"
+                  className={`avatar-${el.id}`}
+                  name="avatar_id"
+                  key={el.id}
+                  value={el.id}
+                  onChange={onChange}
+                  onClick={onChange}
+                  readonly="readonly"
+                />
+              ))}
+          </div>
           <button type="submit" onClick={onSubmit}>
             {submitButtonText}
           </button>
