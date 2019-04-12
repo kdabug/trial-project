@@ -8,7 +8,7 @@ const registerUser = async registerData => {
     user: registerData
   });
   console.log("this is create user: resp", respData);
-  return respData;
+  return respData.data;
 };
 
 const loginUser = async ({ email, password }) => {
@@ -33,9 +33,9 @@ const verifyToken = async () => {
   }
 };
 
-const fetchUserData = async () => {
+const fetchUserData = async id => {
   console.log("this is fetch user data api", api);
-  const respData = await api.get(`/users`);
+  const respData = await api.get(`/users/${id}`);
   console.log("this is current userData: resp", respData);
   return respData;
 };

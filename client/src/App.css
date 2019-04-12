@@ -174,6 +174,26 @@ button:hover {
   margin: 0 auto;
   border: 2px #f8bf05 solid;
 }
+.user-clue-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.more-details {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin: 10px;
+  font-size: 16px;
+  border: 4px solid #cedaf4;
+  background-color: #cedaf47b;
+  color: #020242;
+  padding-left: 5px;
+  border-radius: 10%;
+}
+#up {
+  text-transform: uppercase;
+}
 .user-form-container {
   background: #02024292;
   height: 100vh;
@@ -347,4 +367,14 @@ button:hover {
 .money {
   font-size: 40px;
   color: #f8bf05;
+}
+
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  text-align: center;
+  width: 80%;
+  height: auto;
+  text-transform: uppercase;
 }

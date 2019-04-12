@@ -59,29 +59,38 @@ export default class CategoryDetails extends Component {
               />
             </>
           )}
-          {questions && showMore && (
-            <>
-              {clues.map((clue, i) => (
-                <div className="more-details" key={i}>
-                  <h3>Answer: {clue.question}</h3>
-                  <h3>Question: {clue.answer}</h3>
-                  <button
-                    className="question-button"
-                    key={i}
-                    onClick={e => handleDeleteQuestion(e, clue.id)}
-                  >
-                    Delete Question
-                  </button>
-                </div>
-              ))}
-              <button
-                className="pretty-button"
-                onClick={this.handleAddQuestionButton}
-              >
-                {showAdd ? "Hide Form" : "Add Question"}
-              </button>
-            </>
-          )}
+          <div className="user-clue-container">
+            {questions && showMore && (
+              <>
+                {clues.map((clue, i) => (
+                  <div className="more-details" key={i}>
+                    <>
+                      <>
+                        <h3>Clue:</h3> <h3 id="up">{clue.question}</h3>
+                      </>
+                      <>
+                        <h3>What is...</h3>
+                        <h3 id="up">{clue.answer}</h3>
+                      </>
+                    </>
+                    <button
+                      className="question-button"
+                      key={i}
+                      onClick={e => handleDeleteQuestion(e, clue.id)}
+                    >
+                      Delete Question
+                    </button>
+                  </div>
+                ))}
+                <button
+                  className="pretty-button"
+                  onClick={this.handleAddQuestionButton}
+                >
+                  {showAdd ? "Hide Form" : "Add Question"}
+                </button>
+              </>
+            )}
+          </div>
         </>
       </div>
     );

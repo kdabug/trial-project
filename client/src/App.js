@@ -60,15 +60,13 @@ class App extends Component {
 
   async fetchUserData() {
     console.log(
-      "this is getting localsotragetoke",
+      "this is getting localstorage token",
       localStorage.getItem("token")
     );
-    const userData = await fetchUserData();
+    const userData = await fetchUserData(this.state.userData.id);
     console.log("userdata from fetchUserData", userData);
-
     this.setState({
       currentUser: userData,
-      userData: userData,
       loginFormData: {
         email: "",
         password: ""
@@ -84,8 +82,8 @@ class App extends Component {
     this.setState({
       userData: userData.user
     });
+    console.log("this is handleLogin state userData", this.state.userData);
     this.fetchUserData();
-    this.props.history.push(`/`);
   }
 
   handleLoginClick(e) {

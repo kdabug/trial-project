@@ -44,6 +44,7 @@ class UserProfilePage extends Component {
     this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
     this.handleShowHistory = this.handleShowHistory.bind(this);
+    this.sendToCustomGame = this.sendToCustomGame.bind(this);
   }
   handleChange(e) {
     e.preventDefault();
@@ -137,6 +138,26 @@ class UserProfilePage extends Component {
     }));
   }
 
+  sendToCustomGame() {
+    const gameData = [];
+    const { userCategories, userQuestions } = this.state.userCreated;
+    console.log("this is userCreated", this.state.userCreated);
+    if (userCategories.length > 5) {
+      for (let i = 0; i < 6; i++) {
+        let theCat =
+          userCategories[Math.round(Math.random() * userCategories.length)];
+        let theClues = userQuestions.filter(el => el.category_id === theCat.id);
+        gameData.push(theCat.push(theClues));
+      }
+      console.log("this is send to custom game", gameData);
+    } else {
+      alert(
+        "You don't have enough user-data to start a game. Make more categories and clues."
+      );
+    }
+    //this.props.playGame(gameData);
+  }
+
   async componentDidMount() {
     const checkUser = await localStorage.getItem("token");
     if (checkUser) {
@@ -179,30 +200,48 @@ class UserProfilePage extends Component {
             <button className="user-button" onClick={this.handleShowHistory}>
               Show Game History
             </button>
-            <button className="user-button" onClick={this.toggleAddCategory}>
-              Create Custom Category
+            <button className="user-button" onClick={this.sendToCustomGame}>
+              Create Custom Game
             </button>
             <button className="user-button" onClick={this.handleDeleteUser}>
               Delete User
             </button>
+            <button className="user-button" onClick={this.toggleAddCategory}>
+              Show/Add Categories
+            </button>
           </div>
           {this.state.userCreated.userQuestions && (
             <div className="user-categories-container">
-              <h1>Your Categories:</h1>
-              {this.state.userCreated.userCategories.map((category, i) => (
+              {this.state.showAdd && (
                 <>
-                  <CategoryDetails
-                    question={this.state.userInput.question}
-                    answer={this.state.userInput.answer}
-                    categoryData={category}
-                    questions={this.state.userCreated.userQuestions}
-                    handleChange={this.handleChange}
-                    handleQuestionSubmit={this.handleQuestionSubmit}
-                    handleDeleteCategory={this.handleDeleteCategoy}
-                    handleDeleteQuestion={this.handleDeleteQuestion}
-                  />
+                  <div className="create-category-container">
+                    <h1>Add Category:</h1>
+                    <>
+                      <CreateCategory
+                        onSubmit={this.handleCategorySubmit}
+                        onChange={this.handleChange}
+                        category={this.state.userInput.category}
+                      />
+                    </>
+                  </div>
+
+                  {this.state.userCreated.userCategories.map((category, i) => (
+                    <>
+                      <h1>{category.category}</h1>
+                      <CategoryDetails
+                        question={this.state.userInput.question}
+                        answer={this.state.userInput.answer}
+                        categoryData={category}
+                        questions={this.state.userCreated.userQuestions}
+                        handleChange={this.handleChange}
+                        handleQuestionSubmit={this.handleQuestionSubmit}
+                        handleDeleteCategory={this.handleDeleteCategory}
+                        handleDeleteQuestion={this.handleDeleteQuestion}
+                      />
+                    </>
+                  ))}
                 </>
-              ))}
+              )}
             </div>
           )}
           {this.state.toggleShowHistory && (
@@ -210,19 +249,6 @@ class UserProfilePage extends Component {
               <h1>Game History:</h1>
               <>
                 <DisplayGameHistory />
-              </>
-            </div>
-          )}
-
-          {this.state.showAdd && (
-            <div className="create-category-container">
-              <h1>Add Category:</h1>
-              <>
-                <CreateCategory
-                  onSubmit={this.handleCategorySubmit}
-                  onChange={this.handleChange}
-                  category={this.state.userInput.category}
-                />
               </>
             </div>
           )}
