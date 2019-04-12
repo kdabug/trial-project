@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :update, :destroy]
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :set_category, only: [:update, :destroy]
+
   # create_table "categories", force: :cascade do |t|
   #     t.string "category"
   #     t.datetime "created_at", null: false
@@ -10,19 +11,19 @@ class CategoriesController < ApplicationController
   #   end
 
   def index
-    @categories = Category.all
-
+    @categories = Categories.where(user_id: @user.id)
     render json: @categories
   end
 
   # GET /categories/1
   def show
+    @category = @user.category
     render json: @category
   end
 
   # POST /categories
   def create
-    @category = current_user.categories.new(category_params)
+    @category = Category.new(category_params)
 
     if @category.save
       render json: @category, status: :created, location: @category
@@ -47,15 +48,19 @@ class CategoriesController < ApplicationController
 
   # GET /categories/mine
   def mine
-    @categories = current_user.categories
+    @categories = @user.categories
 
     render json: @categories
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 
   def category_params

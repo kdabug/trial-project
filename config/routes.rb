@@ -4,22 +4,13 @@ Rails.application.routes.draw do
   get "/get-boards", to: "responses#get_boards"
   get "/get-random", to: "responses#get_random"
 
-  post "/user_token" => "user_token#create"
+  post "user_token" => "user_token#create"
 
   get "/users/current", to: "users#current"
   resources :users
 
-  resources :categories do
-    collection do
-      get "mine"
-    end
-  end
-  resources :questions do
-    collection do
-      get "mine"
-    end
-  end
-
+  resources :categories
+  resources :questions
   # get "sessions/new"
 
   # # get "/users/verify", to: "users#verify"

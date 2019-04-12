@@ -68,7 +68,7 @@ export default props => {
               <input
                 type="textarea"
                 className={`avatar-${el.id}`}
-                name="avatar"
+                name="avatar_id"
                 key={el.id}
                 value={el.id}
                 onChange={onChange}

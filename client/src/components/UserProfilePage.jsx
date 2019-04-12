@@ -61,6 +61,7 @@ class UserProfilePage extends Component {
   }
   async handleQuestionSubmit(e) {
     e.preventDefault();
+
     const resp = await createQuestion(this.state.userInput.question);
     console.log(resp);
     this.setState(prevState => ({
@@ -71,11 +72,15 @@ class UserProfilePage extends Component {
   }
   async handleCategorySubmit(e) {
     e.preventDefault();
-    const resp = await createCategory(this.state.userInputData.category);
+
+    const resp = await createCategory(
+      this.props.userData.id,
+      this.state.userInput.category
+    );
     console.log(resp);
     this.setState(prevState => ({
-      userInputData: {
-        ...prevState.userInputData
+      userInput: {
+        ...prevState.userInput
       }
     }));
   }

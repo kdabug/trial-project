@@ -1,17 +1,12 @@
-import axios from "axios";
-
-const BASE_URL = "http://localhost:3000";
-const api = axios.create({
-  baseURL: "http://localhost:3000",
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("jwt")}`
-  }
-});
+const { api, updateToken } = require("./apiHelper");
 
 ////////CATEGORIES
 
-const createCategory = async (user_id, category) => {
-  const respData = await api.post(`/categories`, category);
+const createCategory = async (id, category) => {
+  const respData = await api.post(`/categories`, {
+    category: category,
+    user_id: id
+  });
   console.log("this is create category: resp", respData);
   return respData.data;
 };
@@ -26,10 +21,8 @@ const updateCategory = async (user_id, cat_id, edits) => {
   return respData.data;
 };
 
-const fetchCategories = async user_id => {
-  const respData = await api.get(`/categories`, {
-    params: { user_id: user_id }
-  });
+const fetchCategories = async id => {
+  const respData = await api.get(`/categories`, { user_id: id });
   console.log("this is fetch category: resp", respData);
   return respData.data;
 };

@@ -6,7 +6,8 @@ import {
   fetchUserData,
   updateUser,
   registerUser,
-  loginUser
+  loginUser,
+  verifyToken
 } from "./services/usersAPI";
 import decode from "jwt-decode";
 import "./App.css";
@@ -79,13 +80,12 @@ class App extends Component {
     e.preventDefault();
     const userToken = await loginUser(this.state.loginFormData);
     localStorage.setItem("jwt", userToken.jwt);
-    this.fetchUserData();
-    const userData = await fetchUserData();
-    console.log("userdata from handleLogin", userData);
-
+    // const userData = await fetchUserData();
+    // console.log("userdata from handleLogin", userData);
     this.setState({
       token: userToken.jwt
     });
+    this.fetchUserData();
     this.props.history.push(`/`);
   }
 
@@ -104,9 +104,9 @@ class App extends Component {
     e.preventDefault();
     const userData = await registerUser(this.state.registerFormData);
     this.setState((prevState, newState) => ({
-      currentUser: userData.data.user.username,
-      userData: userData.data.user,
-      token: userData.data.token,
+      currentUser: userData.username,
+      userData: userData,
+      token: userData.token,
       registerFormData: {
         username: "",
         email: "",
@@ -114,7 +114,7 @@ class App extends Component {
         avatar_id: ""
       }
     }));
-    localStorage.setItem("jwt", userData.data.token);
+    localStorage.setItem("jwt", userData.token);
     this.props.history.push(`/`);
   }
 
@@ -195,11 +195,12 @@ class App extends Component {
   async componentDidMount() {
     await this.startGameData();
     const checkUser = localStorage.getItem("jwt");
+    const currentUser = await verifyToken();
     console.log("this is app.js cdm checkuser", checkUser);
     if (checkUser) {
-      const user = decode(checkUser);
+      const userData = decode(checkUser);
       this.setState((prevState, newState) => ({
-        currentUser: user,
+        currentUser: currentUser,
         token: checkUser,
         userData: {
           id: user.id,
@@ -216,7 +217,7 @@ class App extends Component {
   render() {
     return (
       <div className="Main-app-body">
-        Hello
+        <GameHeader show={true} />
         <Route
           exact
           path="/"
@@ -312,15 +313,17 @@ class App extends Component {
           path="/play"
           render={props => (
             <>
-              <GameHeader show={true} />
               <RenderGame
                 {...props}
                 currentScore={this.state.currentScore}
                 gameData={this.state.gameData}
               />
-              <GameFooter />
             </>
           )}
+        />
+        <GameFooter
+          show={this.state.currentUser}
+          userData={this.state.userData}
         />
       </div>
     );
