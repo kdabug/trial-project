@@ -8,7 +8,14 @@ class UsersController < ApplicationController
   #     t.datetime "created_at", null: false
   #     t.datetime "updated_at", null: false
   #   end
-  before_action :set_user, only: [:show, :update, :destroy]
+  #before_action :set_user, only: [:show, :update, :destroy]
+  #before_action :authenticate_user, except: [:new]
+  skip_before_action :ensure_signed_in, only: [:create, :login]
+
+  def gen_token(user_id)
+    payload = { id: user_id }
+    JWT.encode(payload, Rails.application.secrets.secret_key_base)
+  end
 
   # GET /users
   def index
@@ -24,13 +31,31 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    new_user = User.new(user_params)
 
-    if @user.save
-      render json: @user, status: :created, location: @user
+    if new_user.valid?
+      new_user.save!
+      render json: { user: user_data, token: gen_token(new_user.id) }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: nothing: true, status: 401
     end
+  end
+
+  def login
+    email = params[:email]
+    password = params[:password]
+
+    user = User.find_from_credentials email, password
+    if user.nil?
+      render nothing: true, status: 401
+    else 
+      render json: {user: user, token: gen_token(user.id)}
+    end
+  end
+
+  def verify
+    ensure_signed_in
+    render json: { user: current_user }
   end
 
   # PATCH/PUT /users/1

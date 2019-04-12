@@ -1,43 +1,31 @@
 class QuestionsController < ApplicationController
-  # create_table "questions", force: :cascade do |t|
-  #     t.string "question"
-  #     t.string "answer"
-  #     t.datetime "created_at", null: false
-  #     t.datetime "updated_at", null: false
-  #     t.bigint "user_id"
-  #     t.index ["user_id"], name: "index_questions_on_user_id"
-  #   end
   before_action :set_question, only: [:show, :update, :destroy]
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :ensure_signed_in
 
   def index
-    @questions = Question.all
-
-    render json: @questions
+    questions = current_user.question.all
+    render json: questions
   end
 
   # GET /questions/1
-  def show
-    render json: @question
-  end
+  # def show
+  #   @question = user.question
+  #   render json: @question
+  # end
 
   # POST /questions
   def create
-    @question = current_user.questions.new(question_params)
-
-    if @question.save
-      render json: @question, status: :created, location: @question
-    else
-      render json: @question.errors, status: :unprocessable_entity
-    end
+    question = @current_user.question.create!(question_params)
+    render json: { question: question }
   end
 
   # PATCH/PUT /questions/1
   def update
-    if @question.update(question_params)
+    if @question.user == current_user
+      @question.update!(question_params)
       render json: @question
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render :unauthorized
     end
   end
 
@@ -47,20 +35,22 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/mine
-  def mine
-    @questions = current_user.questions
-
-    render json: @questions
-  end
+  # def mine
+  #   @questions = @user.questions
+  #   render json: @questions
+  # end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
+
   def set_question
     @question = Question.find(params[:id])
   end
 
   def question_params
-    params.require(:question).permit(:question, :answer, :user_id, :category_id)
+    params.permit(:user_id, :question, :answer, :category_id)
   end
 end

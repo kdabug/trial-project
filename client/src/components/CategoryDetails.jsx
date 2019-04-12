@@ -29,8 +29,8 @@ export default class CategoryDetails extends Component {
       handleDeleteQuestion,
       handleChange,
       handleQuestionSubmit,
-      answer,
-      question
+      question,
+      answer
     } = this.props;
     const { showMore, showAdd } = this.state;
     const clues = questions.filter(el => el.category_id === categoryData.id);
@@ -51,11 +51,11 @@ export default class CategoryDetails extends Component {
           {showAdd && (
             <>
               <CreateQuestion
-                categoryId={categoryData.id}
+                category_id={categoryData.id}
                 onChange={handleChange}
                 onSubmit={handleQuestionSubmit}
-                answer={answer}
                 question={question}
+                answer={answer}
               />
             </>
           )}

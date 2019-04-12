@@ -11,7 +11,7 @@ class RenderGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameTimer: 1800,
+      gameTimer: 1800000,
       quesitonTimer: 10,
       currentClue: {},
       currentValue: 0,
@@ -19,6 +19,7 @@ class RenderGame extends Component {
       toggleAnswered: false,
       toggleFinalTrial: false,
       toggleSecondRound: true,
+      toggleBoard: true,
       roundOne: "",
       roundTwo: "",
       gameData: this.props.gameData,
@@ -58,6 +59,7 @@ class RenderGame extends Component {
     console.log("handleAskQuestions", id);
     this.setState(prevState => ({
       toggleShowQuestion: !prevState.toggleShowQuestion,
+      toggleBoard: !prevState.toggleBoard,
       currentClue: clue,
       currentValue: clue.id
     }));
@@ -147,27 +149,29 @@ class RenderGame extends Component {
             />
           )}
         </>
-        <>
-          {this.state.roundOne ? (
-            <>
-              {!this.state.toggleSecondRound ? (
-                <CreateBoard
-                  questionData={this.state.roundOne}
-                  handleAskQuestion={this.handleAskQuestion}
-                  round={1}
-                />
-              ) : (
-                <CreateBoard
-                  questionData={this.state.roundTwo}
-                  handleAskQuestion={this.handleAskQuestion}
-                  round={2}
-                />
-              )}
-            </>
-          ) : (
-            <Loading show="yes" />
-          )}
-        </>
+        {this.state.toggleBoard && (
+          <>
+            {this.state.roundOne ? (
+              <>
+                {!this.state.toggleSecondRound ? (
+                  <CreateBoard
+                    questionData={this.state.roundOne}
+                    handleAskQuestion={this.handleAskQuestion}
+                    round={1}
+                  />
+                ) : (
+                  <CreateBoard
+                    questionData={this.state.roundTwo}
+                    handleAskQuestion={this.handleAskQuestion}
+                    round={2}
+                  />
+                )}
+              </>
+            ) : (
+              <Loading show="yes" />
+            )}
+          </>
+        )}
       </div>
     );
   }

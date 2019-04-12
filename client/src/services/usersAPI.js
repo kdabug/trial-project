@@ -1,3 +1,4 @@
+import axios from "axios";
 const { api, updateToken } = require("./apiHelper");
 
 const BASE_URL = "http://localhost:3000";
@@ -18,7 +19,7 @@ const loginUser = async ({ email, password }) => {
     }
   });
   const data = resp.data;
-  updateToken(respData.data.jwt);
+  updateToken(resp.data.jwt);
   console.log("this is login resp data", data);
   return data;
 };

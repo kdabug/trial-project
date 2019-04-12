@@ -199,15 +199,16 @@ class App extends Component {
     console.log("this is app.js cdm checkuser", checkUser);
     if (checkUser) {
       const userData = decode(checkUser);
+      console.log("this is app.js cdm userData", userData);
       this.setState((prevState, newState) => ({
         currentUser: currentUser,
         token: checkUser,
         userData: {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          avatar: user.avatar,
-          totalScore: user.total_score
+          id: userData.id,
+          username: userData.username,
+          email: userData.email,
+          avatar: userData.avatar,
+          totalScore: userData.total_score
         }
       }));
     }

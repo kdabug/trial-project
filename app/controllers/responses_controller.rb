@@ -2,6 +2,8 @@ require "httparty"
 require "board"
 
 class ResponsesController < ApplicationController
+  skip_before_action :ensure_signed_in, raise: false
+
   def initialize
     @board = Board.new
   end

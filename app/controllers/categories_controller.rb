@@ -1,43 +1,32 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+  # before_action :authenticate_user, except: [:create]
   before_action :set_category, only: [:update, :destroy]
-
-  # create_table "categories", force: :cascade do |t|
-  #     t.string "category"
-  #     t.datetime "created_at", null: false
-  #     t.datetime "updated_at", null: false
-  #     t.bigint "user_id"
-  #     t.index ["user_id"], name: "index_categories_on_user_id"
-  #   end
+  before_action :ensure_signed_in
 
   def index
-    @categories = Categories.where(user_id: @user.id)
-    render json: @categories
+    categories = current_user.categories.all
+    render json: categories
   end
 
   # GET /categories/1
-  def show
-    @category = @user.category
-    render json: @category
-  end
+  # def show
+  #   @category = user.category
+  #   render json: @category
+  # end
 
   # POST /categories
   def create
-    @category = Category.new(category_params)
-
-    if @category.save
-      render json: @category, status: :created, location: @category
-    else
-      render json: @category.errors, status: :unprocessable_entity
-    end
+    category = @current_user.categories.create!(category_params)
+    render json: { category: category }
   end
 
   # PATCH/PUT /categories/1
   def update
-    if @category.update(category_params)
+    if @category.user == current_user
+      @category.update!(category_params)
       render json: @category
     else
-      render json: @category.errors, status: :unprocessable_entity
+      render :unauthorized
     end
   end
 
@@ -47,23 +36,22 @@ class CategoriesController < ApplicationController
   end
 
   # GET /categories/mine
-  def mine
-    @categories = @user.categories
-
-    render json: @categories
-  end
+  # def mine
+  #   @categories = @user.categories
+  #   render json: @categories
+  # end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
 
   def set_category
-    @category = Category.find(params[:category_id])
+    @category = Category.find(params[:id])
   end
 
   def category_params
-    params.require(:category).permit(:user_id, :category)
+    params.permit(:user_id, :category)
   end
 end

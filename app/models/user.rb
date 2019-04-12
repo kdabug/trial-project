@@ -14,4 +14,10 @@ class User < ApplicationRecord
       avatar_id: avatar_id,
     }
   end
+
+  def self.from_token_payload(payload)
+    # Returns a valid user, `nil` or raise
+    # e.g.
+    #   self.find payload["sub"]
+  end
 end

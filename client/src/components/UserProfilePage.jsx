@@ -29,11 +29,8 @@ class UserProfilePage extends Component {
       toggleShowHistory: false,
       userInput: {
         category: "",
-        question: {
-          question: "",
-          answer: "",
-          category_id: ""
-        }
+        question: "",
+        answer: ""
       }
     };
     this.getUsersQuestions = this.getUsersQuestions.bind(this);
@@ -51,7 +48,6 @@ class UserProfilePage extends Component {
   handleChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log("target name val", e.target, name, value);
     this.setState(prevState => ({
       userInput: {
         ...prevState.userInput,
@@ -59,20 +55,29 @@ class UserProfilePage extends Component {
       }
     }));
   }
-  async handleQuestionSubmit(e) {
+  async handleQuestionSubmit(e, id) {
     e.preventDefault();
-
-    const resp = await createQuestion(this.state.userInput.question);
+    const { question, answer } = this.state.userInput;
+    const submittedQuestion = {
+      question,
+      answer,
+      category_id: id,
+      user_id: this.props.userData.id
+    };
+    const resp = await createQuestion(submittedQuestion);
     console.log(resp);
     this.setState(prevState => ({
-      userInputData: {
-        ...prevState.userInputData
+      userInput: {
+        ...prevState.userInput,
+        question: "",
+        answer: "",
+        category_id: ""
       }
     }));
+    await this.getUsersQuestions();
   }
   async handleCategorySubmit(e) {
     e.preventDefault();
-
     const resp = await createCategory(
       this.props.userData.id,
       this.state.userInput.category
@@ -80,9 +85,11 @@ class UserProfilePage extends Component {
     console.log(resp);
     this.setState(prevState => ({
       userInput: {
-        ...prevState.userInput
+        ...prevState.userInput,
+        category: ""
       }
     }));
+    await this.getUsersQuestions();
   }
   async getGameHistory() {
     const gameHistory = await fetchUserHistory(this.props.userData.id);
@@ -111,10 +118,12 @@ class UserProfilePage extends Component {
   async handleDeleteQuestion(e, id) {
     e.preventDefault();
     const deletedQuestion = await deleteQuestion(id);
+    await this.getUsersQuestions();
   }
   async handleDeleteCategory(e, id) {
     e.preventDefault();
     const deletedCategory = await deleteCategory(id);
+    await this.getUsersQuestions();
   }
 
   toggleAddCategory(e) {
@@ -179,8 +188,8 @@ class UserProfilePage extends Component {
                 {this.state.userCreated.userCategories.map((category, i) => (
                   <>
                     <CategoryDetails
-                      question={this.state.userInput.question.question}
-                      answer={this.state.userInput.question.answer}
+                      question={this.state.userInput.question}
+                      answer={this.state.userInput.answer}
                       categoryData={category}
                       questions={this.state.userCreated.userQuestions}
                       handleChange={this.handleChange}
