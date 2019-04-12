@@ -29,7 +29,7 @@ export default class DisplayTiles extends Component {
       <>
         <div
           type="button"
-          className={`question-information-${active}`}
+          className={`question-box-${active}`}
           onClick={e => this.onClick(e, clue)}
           id={clue.id}
         >

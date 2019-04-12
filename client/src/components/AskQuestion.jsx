@@ -17,6 +17,7 @@ export default props => {
             value={props.answer}
             onChange={props.onChange}
             placeholder="Jeopardy"
+            autocomplete="off"
           />
           <button type="submit" onClick={props.onSubmit}>
             Submit

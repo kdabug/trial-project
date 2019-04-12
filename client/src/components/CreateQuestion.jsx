@@ -15,6 +15,7 @@ export default props => {
               value={props.question}
               onChange={props.onChange}
               placeholder="Ex: The gameshow hosted by Alec Trebek. "
+              autocomplete="off"
             />
           </>
           <label htmlFor="question"> What is...</label>
@@ -24,6 +25,7 @@ export default props => {
             value={props.answer}
             onChange={props.onChange}
             placeholder="Jeopardy"
+            autocomplete="off"
           />
           <button
             type="submit"

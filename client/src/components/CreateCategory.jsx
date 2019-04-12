@@ -10,6 +10,7 @@ export default props => (
           value={props.category}
           onChange={props.onChange}
           placeholder="Ex: the eyes have it "
+          autocomplete="off"
         />
         <button type="submit" onClick={props.onSubmit}>
           Submit Category

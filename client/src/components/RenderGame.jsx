@@ -75,11 +75,15 @@ class RenderGame extends Component {
     );
     if (right) {
       this.setState(prevState => ({
-        right: true
+        right: true,
+        toggleShowQuestion: false,
+        toggleAnswered: true
       }));
     } else {
       this.setState(prevState => ({
-        right: false
+        right: false,
+        toggleShowQuestion: false,
+        toggleAnswered: true
       }));
     }
   }
