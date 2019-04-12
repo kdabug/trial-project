@@ -7,14 +7,16 @@ export default props => {
       <h2 className="create-question-header">Add Question</h2>
       <form className="create-question-form" onSubmit={props.onSubmit}>
         <>
-          <label htmlFor="answer"> Clue: </label>
-          <input
-            type="text"
-            name="question"
-            value={props.question}
-            onChange={props.onChange}
-            placeholder="Ex: The gameshow hosted by Alec Trebek. "
-          />
+          <>
+            <label htmlFor="answer"> Clue: </label>
+            <input
+              type="text"
+              name="question"
+              value={props.question}
+              onChange={props.onChange}
+              placeholder="Ex: The gameshow hosted by Alec Trebek. "
+            />
+          </>
           <label htmlFor="question"> What is...</label>
           <input
             type="text"

@@ -7,6 +7,7 @@ const GameFooter = props => {
     <div className="footer">
       {show ? (
         <>
+          <Link to="/">TRIAL</Link>
           <Link to={"/user/" + userData.id + "/username/" + userData.username}>
             PROFILE
           </Link>

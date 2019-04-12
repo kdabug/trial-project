@@ -160,7 +160,7 @@ class UserProfilePage extends Component {
             <h2>{this.props.userData.username}</h2>
           </div>
           <p>Email: {this.props.userData.email}</p>
-          <div className="button-container">
+          <div className="user-profile-button-container">
             <button
               className="user-button"
               onClick={() =>

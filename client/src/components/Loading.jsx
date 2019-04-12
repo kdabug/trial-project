@@ -3,7 +3,7 @@ import { eyeAvs } from "../eyeAvs";
 
 export default props => {
   const { show } = props;
-  console.log("this is loading eyeAvs", eyeAvs);
+
   //debugger;
   return (
     <>

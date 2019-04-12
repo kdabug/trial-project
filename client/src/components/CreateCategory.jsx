@@ -4,7 +4,6 @@ export default props => (
   <div className="create-category-container">
     <form className="create-category-form" onSubmit={props.onSubmit}>
       <>
-        <label htmlFor="answer"> Category: </label>
         <input
           type="text"
           name="category"

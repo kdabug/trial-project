@@ -15882,3 +15882,439 @@ Processing by QuestionsController#index as HTML
 Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 3.9ms)
 
 
+Started POST "/categories" for ::1 at 2019-04-12 03:59:57 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CategoriesController#create as HTML
+  Parameters: {"category"=>"the eyes have it", "user_id"=>2}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:19
+  [1m[36mCategory Create (40.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "the eyes have it"], ["created_at", "2019-04-12 07:59:57.822737"], ["updated_at", "2019-04-12 07:59:57.822737"], ["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:19
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:19
+Completed 200 OK in 92ms (Views: 0.5ms | ActiveRecord: 50.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 03:59:57 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 03:59:57 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 14ms (Views: 2.1ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/questions" for ::1 at 2019-04-12 04:00:07 -0400
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>"peter pumpernickel", "answer"=>"The Be", "category_id"=>8, "user_id"=>2}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[36mQuestion Create (0.6ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "peter pumpernickel"], ["answer", "The Be"], ["created_at", "2019-04-12 08:00:07.200473"], ["updated_at", "2019-04-12 08:00:07.200473"], ["user_id", 2], ["category_id", 8]]
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[35m (40.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:18
+Completed 200 OK in 54ms (Views: 0.5ms | ActiveRecord: 42.6ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 04:00:07 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 04:00:07 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/questions" for ::1 at 2019-04-12 04:00:16 -0400
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>"peter m", "answer"=>"peter pumpernickel", "category_id"=>8, "user_id"=>2}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[36mQuestion Create (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("question", "answer", "created_at", "updated_at", "user_id", "category_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["question", "peter m"], ["answer", "peter pumpernickel"], ["created_at", "2019-04-12 08:00:16.120201"], ["updated_at", "2019-04-12 08:00:16.120201"], ["user_id", 2], ["category_id", 8]]
+  ↳ app/controllers/questions_controller.rb:18
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:18
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 04:00:16 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 04:00:16 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/questions/7" for ::1 at 2019-04-12 04:00:22 -0400
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:50
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:34
+  [1m[36mQuestion Destroy (0.3ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/questions_controller.rb:34
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:34
+Completed 204 No Content in 45ms (ActiveRecord: 40.8ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 04:00:22 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 04:00:22 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/questions/8" for ::1 at 2019-04-12 04:00:23 -0400
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:50
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:34
+  [1m[36mQuestion Destroy (0.2ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/questions_controller.rb:34
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:34
+Completed 204 No Content in 9ms (ActiveRecord: 6.3ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 04:00:23 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 04:00:23 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:01:40 -0400
+Started GET "/categories" for ::1 at 2019-04-12 04:01:40 -0400
+Processing by ResponsesController#get_boards as HTML
+Processing by CategoriesController#index as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1681ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:01:42 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 95ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:15:24 -0400
+Started GET "/categories" for ::1 at 2019-04-12 04:15:24 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_boards as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1939ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:15:26 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/categories" for ::1 at 2019-04-12 04:15:36 -0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"category"=>"every day i cry", "user_id"=>2}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:19
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "every day i cry"], ["created_at", "2019-04-12 08:15:36.938289"], ["updated_at", "2019-04-12 08:15:36.938289"], ["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:19
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:19
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 04:15:36 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 04:15:36 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:28:34 -0400
+Started GET "/categories" for ::1 at 2019-04-12 04:28:34 -0400
+Processing by CategoriesController#index as HTML
+Processing by ResponsesController#get_boards as HTML
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1697ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:28:36 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:28:52 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1842ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:28:53 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 86ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:30:01 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1777ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:30:03 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 86ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:30:11 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1852ms (Views: 12.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:30:13 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:30:35 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2146ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:30:37 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:31:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1881ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:31:45 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:32:04 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1772ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:32:06 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:33:15 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2165ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:33:17 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 83ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:35:52 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1998ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:35:54 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 111ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:37:01 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2280ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:37:04 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 89ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:37:17 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1876ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:37:19 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:37:22 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1933ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:37:24 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 96ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:37:57 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1763ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:37:58 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 87ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:38:10 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1626ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:38:12 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 89ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:38:19 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1813ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:38:21 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 87ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:42:46 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1901ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:42:48 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 90ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:43:43 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1789ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:43:44 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:46:23 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1862ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:46:25 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 84ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 04:46:30 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 3864ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 04:46:34 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 98ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+

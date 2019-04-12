@@ -49,6 +49,11 @@ body {
   text-decoration: none;
   color: #cedaf4;
 }
+.welcom-container {
+  height: 100vh;
+  display: flex;
+  margin: auto;
+}
 .welcome-script {
   width: 100%;
   height: 100%;
@@ -56,20 +61,42 @@ body {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  margin: auto;
+  text-align: center;
 }
 
 .title {
   color: white;
   font-family: "Coda Caption", sans-serif;
   text-align: center;
+  font-size: 200px;
+  margin: 0;
+  padding: 0;
 }
 .title:hover {
-  font-size: 1.5rem;
+  transform: scale(1.2);
   color: #9b0505;
+}
+
+.title-button {
+  margin: 0 auto;
+}
+.title-button-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  width: 30vw;
+  margin: 10px auto;
 }
 .user-profile {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 60px;
 }
 button {
   cursor: pointer;
@@ -92,6 +119,57 @@ button:hover {
   border: 2px solid #d31454f9;
   transform: scale(0.95);
   transition: transform 0.2s;
+}
+.user-profile-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+.user-categories-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  border-top: 20px solid #02024292;
+  width: 100%;
+  margin: 20px auto;
+}
+.create-category-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+}
+.create-category-container h1,
+.user-categories-container h1 {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.create-category-form input,
+.create-question-container input {
+  height: 20px;
+  width: 40vw;
+}
+
+.category-detail-container {
+}
+.category-detail-container h2 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.pretty-button {
+  padding: 10px 15px;
+}
+
+.create-question-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px #f8bf05 solid;
 }
 .user-form-container {
   background: #02024292;

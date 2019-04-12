@@ -217,7 +217,7 @@ class App extends Component {
   render() {
     return (
       <div className="Main-app-body">
-        <GameHeader show={true} />
+        {/* <GameHeader show={true} /> */}
         <Route
           exact
           path="/"

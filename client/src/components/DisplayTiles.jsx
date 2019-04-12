@@ -33,7 +33,7 @@ export default class DisplayTiles extends Component {
           onClick={e => this.onClick(e, clue)}
           id={clue.id}
         >
-          <span className="money">${value * 100 * round}</span>
+          <span className="money">${(value + 1) * 100 * round}</span>
         </div>
       </>
     );
