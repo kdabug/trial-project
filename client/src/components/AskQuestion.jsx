@@ -19,7 +19,7 @@ export default props => {
             placeholder="Jeopardy"
             autocomplete="off"
           />
-          <button type="submit" onClick={props.onSubmit}>
+          <button type="submit" onClick={e => props.onSubmit(e, props.value)}>
             Submit
           </button>
         </>

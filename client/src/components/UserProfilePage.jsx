@@ -141,6 +141,7 @@ class UserProfilePage extends Component {
     const checkUser = await localStorage.getItem("token");
     if (checkUser) {
       const user = decode(checkUser);
+      this.setState(prevState => ({ userData: !prevState.showAdd }));
       console.log(
         "this is cdm on UserProfile Component, user",
         user,
@@ -155,7 +156,11 @@ class UserProfilePage extends Component {
         <div className="user-profile">
           <div className="avatar-username">
             <div
-              className={`avatar-${this.props.userData.avatar}` || "avatar-1"}
+              className={
+                this.props.userData.avatar_id
+                  ? `avatar-${this.props.userData.avatar_id}`
+                  : "avatar-1"
+              }
             />
             <h2>{this.props.userData.username}</h2>
           </div>

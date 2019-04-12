@@ -48,6 +48,18 @@ const TitlePage = props => {
             <Loading show="yes" />
             <Loading show="yes" />
             <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
+            <Loading show="yes" />
           </div>
         )}
       </div>

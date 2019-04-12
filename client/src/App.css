@@ -98,6 +98,9 @@ body {
   text-align: center;
   margin-bottom: 60px;
 }
+.avatar-username {
+  height: 20vh;
+}
 button {
   cursor: pointer;
   font-size: 15px;
@@ -179,6 +182,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 60px;
 }
 .user-form-container input {
   width: 360px;
@@ -234,9 +238,9 @@ button:hover {
 .avatar-7,
 .avatar-8 {
   width: auto;
-  height: 20vh;
+  height: 15vh;
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: contain;
 }
 
 .loading-pic-container {

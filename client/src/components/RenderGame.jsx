@@ -67,25 +67,21 @@ class RenderGame extends Component {
       currentValue: clue.id
     }));
   }
-  checkAnswer(e) {
+  checkAnswer(e, value) {
     e.preventDefault();
+    const currentScore = this.state;
     const userAnswer = this.state.userInput.answer.toLowerCase();
     const right = userAnswer.includes(
       this.state.currentClue.answer.toLowerCase()
     );
-    if (right) {
-      this.setState(prevState => ({
-        right: true,
-        toggleShowQuestion: false,
-        toggleAnswered: true
-      }));
-    } else {
-      this.setState(prevState => ({
-        right: false,
-        toggleShowQuestion: false,
-        toggleAnswered: true
-      }));
-    }
+    const newScore = right ? currentScore + value : currentScore - value;
+    console.log("this is checkAnswer right", right);
+    this.setState(prevState => ({
+      compResponse: right,
+      toggleShowQuestion: false,
+      toggleAnswered: true,
+      currentScore: newScore
+    }));
   }
   backToBoard(e) {
     e.preventDefault();
@@ -165,7 +161,7 @@ class RenderGame extends Component {
           {this.state.toggleAnswered && (
             <RightOrWrong
               right={this.state.compResponse}
-              score={this.state.currentClue}
+              score={this.state.currentScore}
               onSubmit={this.backToBoard}
               answer={this.state.currentClue.answer}
             />
