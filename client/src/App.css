@@ -63,85 +63,100 @@ body {
   font-family: "Coda Caption", sans-serif;
   text-align: center;
 }
+.title:hover {
+  font-size: 1.5rem;
+  color: #9b0505;
+}
 .user-profile {
   width: 100%;
   margin-top: 50px;
 }
-.user-button {
+button {
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Vollkorn", serif;
+  background-color: #cedaf4;
+  border: none;
+  color: #02024292;
+  height: auto;
+  padding: 20px 32px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 15px;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  justify-content: center;
+}
+button:hover {
+  border: 2px solid #d31454f9;
+  transform: scale(0.95);
+  transition: transform 0.2s;
 }
 .user-form-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
   background: #02024292;
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.user-form-container input {
+  width: 360px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 4px solid #cedaf4;
+  padding-left: 5px;
+}
+.user-form-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .eye-container {
   width: 90%;
   height: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
+
 .avatar-1 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink1.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-2 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink2.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-3 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink3.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-4 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink4.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-5 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink5.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-6 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink6.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-7 {
-  width: 100%;
-  height: auto;
   background: url(./eye_avatars/blink7.gif) center;
-  background-repeat: no-repeat;
-  background-size: 50%;
 }
 .avatar-8 {
-  width: 100%;
-  height: 100px;
   background: url(./eye_avatars/blink8.gif) center;
+}
+.avatar-1,
+.avatar-2,
+.avatar-3,
+.avatar-4,
+.avatar-5,
+.avatar-6,
+.avatar-7,
+.avatar-8 {
+  width: auto;
+  height: 20vh;
   background-repeat: no-repeat;
   background-size: 50%;
 }

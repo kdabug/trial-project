@@ -41,9 +41,7 @@ const fetchUserData = async () => {
 };
 
 const updateUser = async (id, edits) => {
-  const respData = await api.put(`/users/${id}/`, {
-    params: { id: id, user: edits }
-  });
+  const respData = await api.put(`/users/${id}/`, { user: edits });
   console.log("this is update user: resp", respData);
   return respData;
 };

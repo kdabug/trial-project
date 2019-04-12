@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   #     t.datetime "created_at", null: false
   #     t.datetime "updated_at", null: false
   #   end
-  #before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
   #before_action :authenticate_user, except: [:new]
   skip_before_action :ensure_signed_in, only: [:create, :login]
 
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -85,6 +85,6 @@ class UsersController < ApplicationController
   # Only allow a trusted parameter "white list" through.
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :total_score, :password_confirmation)
+    params.require(:user).permit(:username, :id, :email, :avatar_id, :password, :total_score, :password_confirmation)
   end
 end

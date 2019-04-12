@@ -15703,3 +15703,182 @@ Processing by ResponsesController#get_random as HTML
 Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started PUT "/users/undefined/" for ::1 at 2019-04-12 03:45:47 -0400
+  [1m[35m (41.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as HTML
+  Parameters: {"params"=>{"user"=>{"avatar_id"=>"8"}}, "id"=>"undefined", "user"=>{}}
+Filter chain halted as :ensure_signed_in rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:46:42 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1702ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:46:44 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 83ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:47:23 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1942ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:47:25 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 94ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:47:33 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1921ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:47:35 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 87ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 03:48:09 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 41ms (Views: 1.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 03:48:09 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (43.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 50ms (Views: 0.9ms | ActiveRecord: 45.0ms)
+
+
+Started PUT "/users/2/" for ::1 at 2019-04-12 03:48:27 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>2, "username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "totalScore"=>0, "avatar_id"=>"8"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Unpermitted parameters: :id, :totalScore, :avatar_id
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass):
+  
+app/controllers/users_controller.rb:66:in `update'
+Started GET "/get-boards" for ::1 at 2019-04-12 03:51:33 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1931ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:51:35 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 90ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:52:05 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 1864ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:52:07 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-boards" for ::1 at 2019-04-12 03:52:39 -0400
+Processing by ResponsesController#get_boards as HTML
+Completed 200 OK in 2119ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get-random/" for ::1 at 2019-04-12 03:52:41 -0400
+Processing by ResponsesController#get_random as HTML
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/users/2/" for ::1 at 2019-04-12 03:52:47 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>2, "username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "avatar_id"=>"4", "total_score"=>0}, "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Unpermitted parameter: :avatar_id
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.4ms)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass):
+  
+app/controllers/users_controller.rb:66:in `update'
+Started PUT "/users/2/" for ::1 at 2019-04-12 03:53:46 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>2, "username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "avatar_id"=>"1", "total_score"=>0}, "id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 6.5ms)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass):
+  
+app/controllers/users_controller.rb:66:in `update'
+Started PUT "/users/2/" for ::1 at 2019-04-12 03:56:34 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>2, "username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "avatar_id"=>"8", "total_score"=>0}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.6ms)
+
+
+  
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  
+app/controllers/users_controller.rb:66:in `update'
+Started PUT "/users/2/" for ::1 at 2019-04-12 03:59:03 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Gertrude/.rvm/gems/ruby-2.6.2/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>2, "username"=>"kdabug12", "email"=>"mills.ma12@gmail.com", "avatar_id"=>"7", "total_score"=>0}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:82
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:66
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "avatar_id" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["avatar_id", 7], ["updated_at", "2019-04-12 07:59:03.499095"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:66
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:66
+Completed 200 OK in 22ms (Views: 0.7ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/categories" for ::1 at 2019-04-12 03:59:03 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/categories_controller.rb:8
+Completed 200 OK in 21ms (Views: 1.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/questions?user_id=2" for ::1 at 2019-04-12 03:59:03 -0400
+Processing by QuestionsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/questions_controller.rb:7
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 3.9ms)
+
+

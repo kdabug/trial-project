@@ -30,7 +30,8 @@ class App extends Component {
         username: "",
         email: "",
         password: "",
-        avatar_id: ""
+        avatar_id: "",
+        total_score: ""
       },
       currentUser: null,
       toggleLogin: true,
@@ -205,8 +206,8 @@ class App extends Component {
           id: userData.id,
           username: userData.username,
           email: userData.email,
-          avatar: userData.avatar,
-          totalScore: userData.total_score
+          avatar_id: userData.avatar,
+          total_score: userData.total_score
         }
       }));
     }

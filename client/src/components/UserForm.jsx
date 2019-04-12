@@ -78,15 +78,17 @@ export default props => {
                 />
               ))}
           </div>
-          <button type="submit" onClick={onSubmit}>
-            {submitButtonText}
-          </button>
-          <button type="submit" onClick={onClick}>
-            {backButtonText}
-          </button>
-          <button type="submit" onClick={() => this.props.history.push(`/`)}>
-            Back to Home
-          </button>
+          <div className="user-form-button-container">
+            <button type="submit" onClick={onSubmit}>
+              {submitButtonText}
+            </button>
+            <button type="submit" onClick={onClick}>
+              {backButtonText}
+            </button>
+            <button type="submit" onClick={() => this.props.history.push(`/`)}>
+              Back to Home
+            </button>
+          </div>
         </form>
       )}
     </>
