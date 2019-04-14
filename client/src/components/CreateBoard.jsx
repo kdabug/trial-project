@@ -3,27 +3,29 @@ import DisplayTiles from "./DisplayTiles";
 
 export default props => {
   console.log("this is createBoard props", props);
+  const { questionData, handleAskQuestion, round } = props;
   return (
     <div className="create-board-container">
-      {props.questionData && (
-        <>
-          {props.questionData.map((category, index) => (
-            <div className="category-column-container">
+      <>
+        {questionData.map((category, index) => (
+          <div className="category-column-container">
+            <div className="category-title-container">
               <h1 key={index}>{category.title}</h1>
-              {category.clues.map((clue, i) => (
-                <>
+            </div>
+            {category.clues.map((clue, i) => {
+              if (i < 5)
+                return (
                   <DisplayTiles
-                    handleAskQuestion={props.handleAskQuestion}
+                    handleAskQuestion={handleAskQuestion}
                     value={i}
                     clue={clue}
-                    round={props.round}
+                    round={round}
                   />
-                </>
-              ))}
-            </div>
-          ))}
-        </>
-      )}
+                );
+            })}
+          </div>
+        ))}
+      </>
     </div>
   );
 };

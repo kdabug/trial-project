@@ -19,9 +19,10 @@ class RenderGame extends Component {
       toggleAnswered: false,
       toggleFinalTrial: false,
       toggleSecondRound: true,
-      toggleBoard: true,
+      // toggleBoard: true,
       roundOne: "",
       roundTwo: "",
+      current_round: 1,
       gameData: this.props.gameData,
       userInput: {
         answer: "",
@@ -41,6 +42,7 @@ class RenderGame extends Component {
   }
 
   handleChange(e) {
+    e.preventDefault();
     const { name, value } = e.target;
     this.setState(prevState => ({
       userInput: {
@@ -62,7 +64,7 @@ class RenderGame extends Component {
     console.log("handleAskQuestions", id);
     this.setState(prevState => ({
       toggleShowQuestion: !prevState.toggleShowQuestion,
-      toggleBoard: !prevState.toggleBoard,
+      // toggleBoard: !prevState.toggleBoard,
       currentClue: clue,
       currentValue: clue.id
     }));
@@ -77,6 +79,9 @@ class RenderGame extends Component {
     const newScore = right ? currentScore + value : currentScore - value;
     console.log("this is checkAnswer right", right);
     this.setState(prevState => ({
+      userInput: {
+        answer: ""
+      },
       compResponse: right,
       toggleShowQuestion: false,
       toggleAnswered: true,
@@ -136,60 +141,41 @@ class RenderGame extends Component {
           onComplete={this.finalTrial}
         />
         <>
-          {this.state.toggleShowQuestion && (
-            <AskQuestion
-              clue={this.state.currentClue}
-              value={this.state.currentValue}
-              timer={this.state.timer}
-              onSubmit={this.checkAnswer}
-              onChange={this.handleChange}
-              answer={this.state.userInput.answer}
-            />
-          )}
-          <>
-            {this.state.toggleFinalTrial && (
-              <FinalTrial
-                value={this.state.wager}
-                onSubmit={this.sendToFinalQuestion}
-                onChange={this.handleChange}
-                currentScore={this.state.userInput.currentScore}
-              />
-            )}
-          </>
+          <AskQuestion
+            clue={this.state.currentClue}
+            value={this.state.currentValue}
+            timer={this.state.timer}
+            onSubmit={this.checkAnswer}
+            onChange={this.handleChange}
+            answer={this.state.userInput.answer}
+            show={this.state.toggleShowQuestion}
+          />
+          <FinalTrial
+            value={this.state.wager}
+            onSubmit={this.sendToFinalQuestion}
+            onChange={this.handleChange}
+            currentScore={this.state.userInput.currentScore}
+            show={this.state.toggleFinalTrial}
+          />
+          <RightOrWrong
+            right={this.state.compResponse}
+            score={this.state.currentScore}
+            onSubmit={this.backToBoard}
+            answer={this.state.currentClue.answer}
+            show={this.state.toggleAnswered}
+          />
         </>
         <>
-          {this.state.toggleAnswered && (
-            <RightOrWrong
-              right={this.state.compResponse}
-              score={this.state.currentScore}
-              onSubmit={this.backToBoard}
-              answer={this.state.currentClue.answer}
+          {this.state.roundOne ? (
+            <CreateBoard
+              questionData={this.state.roundOne}
+              handleAskQuestion={this.handleAskQuestion}
+              round={this.state.current_round}
             />
+          ) : (
+            <Loading show="yes" />
           )}
         </>
-        {this.state.toggleBoard && (
-          <>
-            {this.state.roundOne ? (
-              <>
-                {!this.state.toggleSecondRound ? (
-                  <CreateBoard
-                    questionData={this.state.roundOne}
-                    handleAskQuestion={this.handleAskQuestion}
-                    round={2}
-                  />
-                ) : (
-                  <CreateBoard
-                    questionData={this.state.roundTwo}
-                    handleAskQuestion={this.handleAskQuestion}
-                    round={1}
-                  />
-                )}
-              </>
-            ) : (
-              <Loading show="yes" />
-            )}
-          </>
-        )}
       </div>
     );
   }

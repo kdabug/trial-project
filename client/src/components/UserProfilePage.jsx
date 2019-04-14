@@ -197,6 +197,9 @@ class UserProfilePage extends Component {
             >
               Edit User
             </button>
+            <button className="user-button" onClick={this.toggleAddCategory}>
+              Show/Add Categories
+            </button>
             <button className="user-button" onClick={this.handleShowHistory}>
               Show Game History
             </button>
@@ -205,9 +208,6 @@ class UserProfilePage extends Component {
             </button>
             <button className="user-button" onClick={this.handleDeleteUser}>
               Delete User
-            </button>
-            <button className="user-button" onClick={this.toggleAddCategory}>
-              Show/Add Categories
             </button>
           </div>
           {this.state.userCreated.userQuestions && (

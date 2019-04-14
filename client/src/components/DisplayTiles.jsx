@@ -4,32 +4,35 @@ export default class DisplayTiles extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: true
+      active: false
     };
-    this.toggleClass = this.toggleClass.bind(this);
+    //this.toggleClass = this.toggleClass.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
-  toggleClass(e) {
-    e.preventDefault();
-    this.setState(prevState => ({
-      active: !prevState.active
-    }));
-  }
+  // toggleClass(e) {
+  //   e.preventDefault();
+  //   e.target.classList.add("clicked");
+  //   console.log("this is display tile classList", e.target.classList);
+  // }
   onClick(e, clue) {
     e.preventDefault();
+    this.setState((prevState, nextState) => ({
+      active: !prevState.active
+    }));
     this.props.handleAskQuestion(e, clue);
-    this.toggleClass(e);
   }
 
   render() {
     const { clue, value, round } = this.props;
-    const { active } = this.state;
+    let tileClass = ["question-box"];
+    if (this.state.active) {
+      tileClass.push("clicked");
+    }
     return (
       <>
         <div
-          type="button"
-          className={`question-box-${active}`}
+          className={tileClass.join(" ")}
           onClick={e => this.onClick(e, clue)}
           id={clue.id}
         >
