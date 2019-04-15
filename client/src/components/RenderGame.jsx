@@ -6,6 +6,7 @@ import RightOrWrong from "./RightOrWrong";
 import FinalTrial from "./FinalTrial";
 import Countdown from "react-countdown-now";
 import CreateBoard from "./CreateBoard";
+import RestartGame from "./RestartGame";
 
 class RenderGame extends Component {
   constructor(props) {
@@ -76,7 +77,11 @@ class RenderGame extends Component {
     const right =
       userAnswer.includes(currentClue.answer.toLowerCase()) ||
       currentClue.answer.toLowerCase().includes(userAnswer);
-    console.log("checkAnswer currentScore and value", currentScore, value);
+    console.log(
+      "checkAnswer currentScore and value",
+      currentScore,
+      currentValue
+    );
     const newScore = right
       ? currentScore + currentValue
       : currentScore - currentValue;
