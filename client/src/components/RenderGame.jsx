@@ -7,6 +7,7 @@ import FinalTrial from "./FinalTrial";
 import Countdown from "react-countdown-now";
 import CreateBoard from "./CreateBoard";
 import RestartGame from "./RestartGame";
+import GameHeader from "./GameHeader";
 
 class RenderGame extends Component {
   constructor(props) {
@@ -182,6 +183,11 @@ class RenderGame extends Component {
           when={this.state.currentScore && this.state.isBlocking}
           message={`Are you sure you want to go to leave this page and lose your current score?`}
         />
+        <GameHeader
+          currentScore={this.state.currentScore}
+          show={this.props.userData}
+          userData={this.props.userData}
+        />
         <>
           <AskQuestion
             clue={this.state.currentClue}
@@ -197,6 +203,7 @@ class RenderGame extends Component {
             onChange={this.handleChange}
             currentScore={this.state.userInput.currentScore}
             show={this.state.toggleFinalTrial}
+            submitGame={this.handleEndGame}
           />
           <AskQuestion
             clue={this.state.currentClue}
@@ -221,21 +228,21 @@ class RenderGame extends Component {
         </>
         <>
           {this.state.roundOne ? (
-            this.state.toggleSecondRound || this.state.questionCount === 30 ? (
-              <CreateBoard
-                questionData={this.state.roundTwo}
-                handleAskQuestion={this.handleAskQuestion}
-                round={2}
-                toggleRound={this.finalTrial}
-                currentScore={this.state.currentScore}
-                timer={this.state.gameTimer}
-              />
-            ) : (
+            !this.state.toggleSecondRound || this.state.questionCount === 30 ? (
               <CreateBoard
                 questionData={this.state.roundOne}
                 handleAskQuestion={this.handleAskQuestion}
                 round={1}
                 toggleRound={this.goToSecondRound}
+                currentScore={this.state.currentScore}
+                timer={this.state.gameTimer}
+              />
+            ) : (
+              <CreateBoard
+                questionData={this.state.roundTwo}
+                handleAskQuestion={this.handleAskQuestion}
+                round={2}
+                toggleRound={this.finalTrial}
                 currentScore={this.state.currentScore}
                 timer={this.state.gameTimer}
               />

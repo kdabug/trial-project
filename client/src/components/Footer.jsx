@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const GameFooter = props => {
+const Footer = props => {
   const { show, userData } = props;
   return (
     <div className="footer">
@@ -23,4 +23,4 @@ const GameFooter = props => {
     </div>
   );
 };
-export default GameFooter;
+export default Footer;

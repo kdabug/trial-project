@@ -5,7 +5,9 @@ gold: #f8bf05
 red:#d31454
 dark-blue: #020242
 font-family: 'Coda Caption', sans-serif;
-font-family: 'Vollkorn', serif;*/
+font-family: 'Vollkorn', serif;
+font-family: 'Anton', sans-serif;
+font-family: 'Dancing Script', cursive;*/
 *,
 *::before,
 *::after {
@@ -33,12 +35,23 @@ body {
   padding: 0;
   position: fixed;
   width: 100%;
-  display: flex;
-  justify-content: center;
   top: 0;
+  font-size: 32px;
   background-color: #d31454f9;
   height: 40px;
+  display: grid;
+  grid-template-columns: 11fr 1fr 1fr;
 }
+.username {
+  grid-column-start: 2;
+  font-family: "Dancing Script", cursive;
+}
+.currentscore {
+  grid-column-start: 3;
+  font-family: "Anton", sans-serif;
+  font-size: 28px;
+}
+
 .header a {
   margin: auto;
   text-decoration: none;
@@ -61,7 +74,7 @@ body {
   text-decoration: none;
   color: #cedaf4;
 }
-.welcom-container {
+.welcome-container {
   height: 100vh;
   display: flex;
   margin: auto;
@@ -115,6 +128,7 @@ body {
 
 .title-button {
   margin: 0 auto;
+  text-transform: uppercase;
 }
 .title-button-container {
   display: flex;
@@ -131,11 +145,21 @@ body {
   justify-content: center;
   align-content: center;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
+
 .avatar-username {
-  height: 20vh;
+  height: auto;
+  width: 50%;
+  margin: auto auto;
+  display: block;
+  flex-direction: row;
+  border: 2vw solid #4b3c05;
+  color: #f8bf05;
+  font-size: 10vh;
+  font-family: "Dancing Script", cursive;
 }
+
 button {
   cursor: pointer;
   font-size: 15px;
@@ -161,8 +185,12 @@ button:hover {
 .user-profile-button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
+}
+.user-button {
+  padding: 4vh;
+  text-transform: uppercase;
 }
 .user-categories-container {
   display: flex;
@@ -339,10 +367,14 @@ button:hover {
   align-content: center;
   text-align: center;
   width: 100%;
+  padding: 0;
+  margin-top: 0px;
 }
 .create-board-header {
   text-align: center;
   margin: 0;
+  padding: 0;
+  margin-top: 40px;
 }
 .create-board-game-title {
   color: #cedaf4;
@@ -353,7 +385,7 @@ button:hover {
 .category-column-container {
   display: flex;
   flex-direction: column;
-  margin: 5vh auto;
+  margin: 0 auto;
   padding: 1.9vw;
   border: 1px solid #cedaf4;
   background-color: #020242;
@@ -377,6 +409,7 @@ button:hover {
   align-items: center;
   text-align: center;
   color: #f8bf05;
+  font-family: "Anton", sans-serif;
 }
 .question-box.clicked {
   pointer-events: none;

@@ -175,17 +175,20 @@ class UserProfilePage extends Component {
     return (
       <>
         <div className="user-profile">
-          <div className="avatar-username">
-            <div
-              className={
-                this.props.userData.avatar_id
-                  ? `avatar-${this.props.userData.avatar_id}`
-                  : "avatar-1"
-              }
-            />
-            <h2>{this.props.userData.username}</h2>
+          <div className="avatar-header">
+            <div className="avatar-username">
+              <div
+                className={
+                  this.props.userData.avatar_id
+                    ? `avatar-${this.props.userData.avatar_id} profile`
+                    : "avatar-1 profile"
+                }
+              />
+              <>
+                <h2>{this.props.userData.username}</h2>
+              </>
+            </div>
           </div>
-          <p>Email: {this.props.userData.email}</p>
           <div className="user-profile-button-container">
             <button
               className="user-button"

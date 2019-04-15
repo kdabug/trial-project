@@ -21,7 +21,7 @@ import UserProfilePage from "./components/UserProfilePage";
 import Contact from "./components/Contact";
 import RenderGame from "./components/RenderGame";
 import AskQuestion from "./components/AskQuestion";
-import GameFooter from "./components/GameFooter";
+import Footer from "./components/Footer";
 
 class App extends Component {
   constructor(props) {
@@ -323,14 +323,12 @@ class App extends Component {
                 currentScore={this.state.currentScore}
                 gameData={this.state.gameData}
                 endGame={this.handleEndGame}
+                userData={this.state.userData}
               />
             </>
           )}
         />
-        <GameFooter
-          show={this.state.currentUser}
-          userData={this.state.userData}
-        />
+        <Footer show={this.state.currentUser} userData={this.state.userData} />
       </div>
     );
   }

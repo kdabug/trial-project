@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { createCategory } from "../services/createCustomGameAPI";
 
 const GameHeader = props => {
-  const { show, userData } = props;
+  const { show, userData, currentScore } = props;
   return (
     <>
       {show && (
         <div className="header">
-          <nav>
-            <Link to="/">TRIAL</Link>
-          </nav>
+          <div className="username">{userData.username}</div>
+          <div className="currentscore">${currentScore}</div>
         </div>
       )}
     </>
