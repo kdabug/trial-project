@@ -54,13 +54,20 @@ const deleteUser = async id => {
 
 const fetchUserHistory = async id => {
   const respData = await api.get(`/games/${id}/`);
-  console.log("this is fetchUserCategories: resp", respData);
+  console.log("this is fetchUserHistory: resp", respData);
   return respData;
+};
+
+const addUserScore = async currentScore => {
+  const respData = await api.post(`/games`, questionData);
+  console.log("this is add game score: resp", respData);
+  return respData.data;
 };
 
 export {
   fetchUserData,
   fetchUserHistory,
+  addUserScore,
   updateUser,
   registerUser,
   loginUser,

@@ -16,18 +16,21 @@ class RenderGame extends Component {
       currentClue: {},
       currentValue: 0,
       toggleShowQuestion: false,
+      toggleShowFinalQuestion: false,
       toggleAnswered: false,
       toggleFinalTrial: false,
-      toggleSecondRound: true,
-      // toggleBoard: true,
+      toggleSecondRound: false,
+      toggleEndGame: false,
+      toggleRestart: false,
       roundOne: "",
       roundTwo: "",
-      current_round: 1,
+      finalQuestion: {},
       gameData: this.props.gameData,
       userInput: {
         answer: "",
         wager: 0
       },
+      questionCount: 0,
       currentScore: 0,
       compResponse: ""
     };
@@ -39,6 +42,8 @@ class RenderGame extends Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.finalTrial = this.finalTrial.bind(this);
     this.setRoundData = this.setRoundData.bind(this);
+    this.goToSecondRound = this.goToSecondRound.bind(this);
+    this.sendToFinalQuestion = this.sendToFinalQuestion.bind(this);
   }
 
   handleChange(e) {
@@ -58,25 +63,28 @@ class RenderGame extends Component {
   //   e.preventDefault();
 
   // }
-  handleAskQuestion(e, clue) {
+  handleAskQuestion(e, clue, value) {
     e.preventDefault();
     const { id } = e.target;
     console.log("handleAskQuestions", id);
     this.setState(prevState => ({
       toggleShowQuestion: !prevState.toggleShowQuestion,
-      // toggleBoard: !prevState.toggleBoard,
       currentClue: clue,
-      currentValue: clue.id
+      currentValue: value,
+      questionCount: prevState.questionCount + 1
     }));
   }
-  checkAnswer(e, value) {
+  checkAnswer(e) {
     e.preventDefault();
-    const currentScore = this.state;
-    const userAnswer = this.state.userInput.answer.toLowerCase();
-    const right = userAnswer.includes(
-      this.state.currentClue.answer.toLowerCase()
-    );
-    const newScore = right ? currentScore + value : currentScore - value;
+    const { userInput, currentScore, currentClue, currentValue } = this.state;
+    const userAnswer = userInput.answer.toLowerCase();
+    const right =
+      userAnswer.includes(currentClue.answer.toLowerCase()) ||
+      currentClue.answer.toLowerCase().includes(userAnswer);
+    console.log("checkAnswer currentScore and value", currentScore, value);
+    const newScore = right
+      ? currentScore + currentValue
+      : currentScore - currentValue;
     console.log("this is checkAnswer right", right);
     this.setState(prevState => ({
       userInput: {
@@ -84,8 +92,16 @@ class RenderGame extends Component {
       },
       compResponse: right,
       toggleShowQuestion: false,
+      toggleShowFinalQuestion: false,
       toggleAnswered: true,
       currentScore: newScore
+    }));
+  }
+
+  checkFinalAnswer(e) {
+    this.checkAnswer(e);
+    this.setState(prevState => ({
+      toggleEndGame: !prevState.toggleEndGame
     }));
   }
   backToBoard(e) {
@@ -93,9 +109,13 @@ class RenderGame extends Component {
     this.setState(prevState => ({
       toggleShowQuestion: false,
       toggleAnswered: false,
-      toggleFinalTrial: false,
-      toggleBoard: true
+      toggleFinalTrial: false
     }));
+    if (this.state.toggleEndGame) {
+      this.setState(prevState => ({
+        toggleRestart: !prevState.toggleRestart
+      }));
+    }
   }
   finalTrial() {
     this.setState(prevState => ({
@@ -104,26 +124,37 @@ class RenderGame extends Component {
       toggleFinalTrial: !prevState.toggleFinalTrial
     }));
   }
-
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.gameData !== nextProps.gameData) {
   //     this.setState({ gameData: nextProps.gameData });
   //   }
   // }
-  goToRoundTwo() {
+  goToSecondRound() {
     this.setState(prevState => ({
       gameData: this.state.roundTwo,
-      toggleSecondRound: !prevState.toggleSecondRound
+      toggleSecondRound: !prevState.toggleSecondRound,
+      questionCounter: 0
     }));
   }
+
+  sendToFinalQuestion() {
+    this.setState(prevState => ({
+      toggleShowFinalQuestion: !prevState.toggleShowFinalQuestion,
+      currentClue: this.state.finalQuestion,
+      currentValue: this.state.wager
+    }));
+  }
+
   setRoundData() {
     const roundOne = this.props.gameData.questionData.splice(0, 5);
     const roundTwo = this.props.gameData.questionData.splice(0, 5);
+    const finalQuestion = this.props.gameData.finalQuestion;
     console.log("this is round1", roundOne);
     console.log("this is round2", roundTwo);
     this.setState((prevState, nextState) => ({
       roundOne,
-      roundTwo
+      roundTwo,
+      finalQuestion
     }));
     console.log("this is renderprops cdm state", this.state);
   }
@@ -143,7 +174,6 @@ class RenderGame extends Component {
         <>
           <AskQuestion
             clue={this.state.currentClue}
-            value={this.state.currentValue}
             timer={this.state.timer}
             onSubmit={this.checkAnswer}
             onChange={this.handleChange}
@@ -151,11 +181,19 @@ class RenderGame extends Component {
             show={this.state.toggleShowQuestion}
           />
           <FinalTrial
-            value={this.state.wager}
+            wager={this.state.wager}
             onSubmit={this.sendToFinalQuestion}
             onChange={this.handleChange}
             currentScore={this.state.userInput.currentScore}
             show={this.state.toggleFinalTrial}
+          />
+          <AskQuestion
+            clue={this.state.currentClue}
+            timer={this.state.timer}
+            onSubmit={this.checkFinalAnswer}
+            onChange={this.handleChange}
+            answer={this.state.userInput.answer}
+            show={this.state.toggleShowFinalQuestion}
           />
           <RightOrWrong
             right={this.state.compResponse}
@@ -164,14 +202,31 @@ class RenderGame extends Component {
             answer={this.state.currentClue.answer}
             show={this.state.toggleAnswered}
           />
+          <RestartGame
+            show={this.state.toggleRestart}
+            submitGame={this.props.handleEndGame}
+            currentScore={this.state.currentScore}
+          />
         </>
         <>
           {this.state.roundOne ? (
-            <CreateBoard
-              questionData={this.state.roundOne}
-              handleAskQuestion={this.handleAskQuestion}
-              round={this.state.current_round}
-            />
+            this.state.toggleSecondRound || this.state.questionCount === 30 ? (
+              <CreateBoard
+                questionData={this.state.roundTwo}
+                handleAskQuestion={this.handleAskQuestion}
+                round={2}
+                toggleRound={this.finalTrial}
+                currentScore={this.state.currentScore}
+              />
+            ) : (
+              <CreateBoard
+                questionData={this.state.roundOne}
+                handleAskQuestion={this.handleAskQuestion}
+                round={1}
+                toggleRound={this.goToSecondRound}
+                currentScore={this.state.currentScore}
+              />
+            )
           ) : (
             <Loading show="yes" />
           )}

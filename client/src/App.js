@@ -7,7 +7,8 @@ import {
   updateUser,
   registerUser,
   loginUser,
-  verifyToken
+  verifyToken,
+  addUserScore
 } from "./services/usersAPI";
 import decode from "jwt-decode";
 import "./App.css";
@@ -55,7 +56,7 @@ class App extends Component {
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.startGameData = this.startGameData.bind(this);
-    // this.restartGame = this.restartGame.bind(this);
+    this.handleEndGame = this.handleEndGame.bind(this);
   }
 
   async fetchUserData() {
@@ -140,8 +141,6 @@ class App extends Component {
     this.props.history.push(`/`);
   }
 
-  async handleEndGame() {}
-
   handleLoginFormChange(e) {
     const { name, value } = e.target;
     this.setState(prevState => ({
@@ -185,9 +184,17 @@ class App extends Component {
     console.log("startGameData gameData", this.state.gameData);
   }
 
-  // async restartGame() {
-  //   await this.getQuestionData();
-  // }
+  async handleEndGame(e, endScore) {
+    if (this.state.currentUser) {
+      const gameData = { user_id: this.state.userData.id, score: endScore };
+      const addUserGame = await addUserScore(gameData);
+      this.props.history.push(`/play`);
+      //await this.getQuestionData();
+    } else {
+      alert(`You are not logged in. Your score of ${endScore} was not saved.`);
+      this.props.history.push(`/play`);
+    }
+  }
 
   async componentDidMount() {
     await this.startGameData();
@@ -315,6 +322,7 @@ class App extends Component {
                 {...props}
                 currentScore={this.state.currentScore}
                 gameData={this.state.gameData}
+                endGame={this.handleEndGame}
               />
             </>
           )}

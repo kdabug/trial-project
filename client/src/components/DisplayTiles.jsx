@@ -15,12 +15,12 @@ export default class DisplayTiles extends Component {
   //   e.target.classList.add("clicked");
   //   console.log("this is display tile classList", e.target.classList);
   // }
-  onClick(e, clue) {
+  onClick(e, clue, value) {
     e.preventDefault();
     this.setState((prevState, nextState) => ({
       active: !prevState.active
     }));
-    this.props.handleAskQuestion(e, clue);
+    this.props.handleAskQuestion(e, clue, value);
   }
 
   render() {
@@ -33,10 +33,10 @@ export default class DisplayTiles extends Component {
       <>
         <div
           className={tileClass.join(" ")}
-          onClick={e => this.onClick(e, clue)}
+          onClick={e => this.onClick(e, clue, value * 100)}
           id={clue.id}
         >
-          <span className="money">${(value + 1) * 100 * round}</span>
+          <span className="money">${value * 100}</span>
         </div>
       </>
     );
