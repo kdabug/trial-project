@@ -6,7 +6,16 @@ red:#d31454
 dark-blue: #020242
 font-family: 'Coda Caption', sans-serif;
 font-family: 'Vollkorn', serif;*/
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin-bottom: 0;
+  padding: 0;
+}
+html {
+  min-height: 100%;
+}
 body {
   background-color: #0f0eff;
   background-repeat: no-repeat;
@@ -15,6 +24,8 @@ body {
   font-family: "Vollkorn", serif;
   margin: 0;
   padding: 0;
+  position: relative;
+  min-height: 100%;
 }
 .header {
   margin: 0;
@@ -320,17 +331,18 @@ button:hover {
 
 .create-board-container {
   display: flex;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   grid-template-columns: row;
   justify-content: space-around;
   align-content: center;
   text-align: center;
   width: 100%;
 }
-.create-board-game-title h1 {
+.create-board-game-title {
   color: #cedaf4;
   font-family: "Coda Caption", sans-serif;
   text-align: center;
+  margin: 0;
 }
 
 .category-column-container {
@@ -437,6 +449,9 @@ button:hover {
   background-color: #02024258;
   position: absolute;
   top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
