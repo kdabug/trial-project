@@ -58,7 +58,7 @@ const fetchUserHistory = async id => {
   return respData;
 };
 
-const addUserScore = async currentScore => {
+const addUserScore = async questionData => {
   const respData = await api.post(`/games`, questionData);
   console.log("this is add game score: resp", respData);
   return respData.data;
