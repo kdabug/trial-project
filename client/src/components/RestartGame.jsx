@@ -4,7 +4,7 @@ import Modal from "./Modal";
 export default props => {
   console.log("this is askquestion props", props);
 
-  const { show, onChange, onSubmit, clue, answer } = props;
+  const { show, currentScore, submitGame } = props;
   return (
     <>
       {show && (
@@ -22,7 +22,7 @@ export default props => {
                 <button
                   type="submit"
                   className="ask-question-button"
-                  onClick={onSubmit}
+                  onClick={submitGame}
                 >
                   Restart Game
                 </button>
