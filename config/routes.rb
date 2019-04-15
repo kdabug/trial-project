@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :questions
+  resources :games
 
   get "/get-boards", to: "responses#get_boards"
   get "/get-random", to: "responses#get_random"

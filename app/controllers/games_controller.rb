@@ -9,52 +9,48 @@
 #   end
 
 class GamesController < ApplicationController
+  before_action :set_game, only: [:update, :destroy]
+  before_action :ensure_signed_in
+
   def index
-    @user = User.find(params[:user_id])
-    @games = Game.where(user_id: @user.id)
+    games = current_user.games.all
+    render json: games
   end
 
-  def show
-    @user = User.find(params[:user_id])
-    @game = Game.find(params[:id])
-  end
+  # GET /games/1
+  # def show
+  #   @game = user.game
+  #   render json: @game
+  # end
 
-  def new
-    @user = User.find(params[:user_id])
-    @game = Game.new
-  end
-
+  # POST /games
   def create
-    @user = User.find(params[:user_id])
-    @game = Game.new(game_params)
-    if @game.save
-      redirect_to user_game_path(@user, @game)
-    end
+    game = @current_user.games.create!(game_params)
+    render json: { game: game }
   end
 
-  def edit
-    @user = User.find(params[:user_id])
-    @game = Game.find(params[:id])
-  end
-
+  # PATCH/PUT /games/1
   def update
-    @user = User.find(params[:user_id])
-    @game = Game.find(params[:id])
-    if @game.update_attributes(game_params)
-      redirect_to user_game_path(@user, @game)
+    if @game.user == current_user
+      @game.update!(game_params)
+      render json: @game
+    else
+      render :unauthorized
     end
   end
 
+  # DELETE /games/1
   def destroy
-    @game = Game.find(params[:id])
-    @user = User.find(params[:user_id])
     @game.destroy
-    redirect_to user_games_path(@user)
   end
 
   private
 
+  def set_game
+    @game = Game.find(params[:id])
+  end
+
   def game_params
-    params.require(:game).permit(:score, :user_id)
+    params.permit(:user_id, :score)
   end
 end
