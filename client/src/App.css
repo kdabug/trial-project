@@ -17,6 +17,7 @@ html {
   min-height: 100%;
 }
 body {
+  background-image: radial-gradient(circle, #020242, #0f0eff);
   background-color: #0f0eff;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -74,6 +75,7 @@ body {
   align-content: center;
   margin: auto;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .title {
@@ -338,10 +340,13 @@ button:hover {
   text-align: center;
   width: 100%;
 }
+.create-board-header {
+  text-align: center;
+  margin: 0;
+}
 .create-board-game-title {
   color: #cedaf4;
   font-family: "Coda Caption", sans-serif;
-  text-align: center;
   margin: 0;
 }
 

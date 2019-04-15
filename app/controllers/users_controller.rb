@@ -18,7 +18,7 @@ class UsersController < ApplicationController
                username: user.username,
                total_score: user.total_score,
                avatar_id: user.avatar_id }
-    JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    JWT.encode(payload, Rails.application.credentials.secret_key_base)
   end
 
   # GET /users

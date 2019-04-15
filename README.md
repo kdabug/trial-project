@@ -14,7 +14,7 @@ This is an app for people who like to play the trivia gameshow "Jeopardy" and wh
 - Rails(v 2.6.2)
 - Sequelize and postgres
 - HTTParty
-- react-coundown-now
+- react-countdown-now
 
 **major problems & solutions**
 Timers for questions. Randomly assigning bonus questions. Potential for multiplayer or online playing with other online users. Using third party api though rails.

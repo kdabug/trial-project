@@ -8,7 +8,7 @@ export default props => {
   return (
     <>
       <div className="create-board-header">
-        <h1 className="create-board-game-title"> TRIALS ROUND {round}</h1>
+        <h1 className="create-board-game-title"> TRIAL ROUND {round}</h1>
         <Countdown date={Date.now() + timer} onComplete={toggleRound} />
       </div>
       <div className="create-board-container">
