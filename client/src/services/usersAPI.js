@@ -1,7 +1,7 @@
 import axios from "axios";
 const { api, updateToken } = require("./apiHelper");
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://evening-citadel-66548.herokuapp.com";
 
 const registerUser = async registerData => {
   const respData = await axios.post(`${BASE_URL}/users`, {

@@ -10,7 +10,7 @@
 //   }
 // };
 import axios from "axios";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://evening-citadel-66548.herokuapp.com";
 
 const getBoards = async () => {
   const respData = await axios.get(`${BASE_URL}/get-boards`);
