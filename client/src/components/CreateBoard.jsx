@@ -9,6 +9,9 @@ export default props => {
     <div className="create-board-container">
       <Countdown date={Date.now() + timer} onComplete={toggleRound} />
       <>
+        <div>
+          <h1 className="create-board-game-title"> TRIALS ROUND {round}</h1>
+        </div>
         {questionData.map((category, index) => (
           <div className="category-column-container">
             <div className="category-title-container">

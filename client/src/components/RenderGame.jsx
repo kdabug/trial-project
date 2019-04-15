@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Prompt } from "react-router-dom";
 import AskQuestion from "./AskQuestion";
 import Loading from "./Loading";
 import RightOrWrong from "./RightOrWrong";
@@ -11,7 +11,7 @@ class RenderGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameTimer: 1800000,
+      gameTimer: 900000,
       quesitonTimer: 10,
       currentClue: {},
       currentValue: 0,
@@ -32,12 +32,12 @@ class RenderGame extends Component {
       },
       questionCount: 0,
       currentScore: 0,
-      compResponse: ""
+      compResponse: "",
+      isBlocking: false
     };
     this.handleAskQuestion = this.handleAskQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleTileClick = this.handleTileClick.bind(this);
+    this.handleEndGame = this.handleEndGame.bind(this);
     this.backToBoard = this.backToBoard.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.finalTrial = this.finalTrial.bind(this);
@@ -56,13 +56,7 @@ class RenderGame extends Component {
       }
     }));
   }
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  // }
-  // handleTileClick(e) {
-  //   e.preventDefault();
 
-  // }
   handleAskQuestion(e, clue, value) {
     e.preventDefault();
     const { id } = e.target;
@@ -71,7 +65,8 @@ class RenderGame extends Component {
       toggleShowQuestion: !prevState.toggleShowQuestion,
       currentClue: clue,
       currentValue: value,
-      questionCount: prevState.questionCount + 1
+      questionCount: prevState.questionCount + 1,
+      isBlocking: true
     }));
   }
   checkAnswer(e) {
@@ -137,6 +132,15 @@ class RenderGame extends Component {
     }));
   }
 
+  async handleEndGame() {
+    this.setState(prevState => ({
+      isBlocking: false
+    }));
+    const endScoreSubmit = await this.props.handleEndGame(
+      this.state.currentScore
+    );
+  }
+
   sendToFinalQuestion() {
     this.setState(prevState => ({
       toggleShowFinalQuestion: !prevState.toggleShowFinalQuestion,
@@ -163,13 +167,15 @@ class RenderGame extends Component {
     this.setRoundData();
   }
 
+  async componentWillUnmount() {}
+
   render() {
     console.log("this is renderGame props", this.props);
     return (
       <div className="render-game-container">
-        <Countdown
-          date={Date.now() + this.state.gameTimer}
-          onComplete={this.finalTrial}
+        <Prompt
+          when={this.state.currentScore && this.state.isBlocking}
+          message={`Are you sure you want to go to leave this page and lose your current score?`}
         />
         <>
           <AskQuestion
@@ -204,7 +210,7 @@ class RenderGame extends Component {
           />
           <RestartGame
             show={this.state.toggleRestart}
-            submitGame={this.props.handleEndGame}
+            submitGame={this.handleEndGame}
             currentScore={this.state.currentScore}
           />
         </>
@@ -217,6 +223,7 @@ class RenderGame extends Component {
                 round={2}
                 toggleRound={this.finalTrial}
                 currentScore={this.state.currentScore}
+                timer={this.state.gameTimer}
               />
             ) : (
               <CreateBoard
@@ -225,6 +232,7 @@ class RenderGame extends Component {
                 round={1}
                 toggleRound={this.goToSecondRound}
                 currentScore={this.state.currentScore}
+                timer={this.state.gameTimer}
               />
             )
           ) : (

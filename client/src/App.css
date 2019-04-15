@@ -66,7 +66,7 @@ body {
 }
 
 .title {
-  color: white;
+  color: #cedaf4;
   font-family: "Coda Caption", sans-serif;
   text-align: center;
   font-size: 200px;
@@ -179,8 +179,6 @@ button:hover {
   width: 40vw;
 }
 
-.category-detail-container {
-}
 .category-detail-container h2 {
   font-size: 20px;
   text-transform: uppercase;
@@ -323,11 +321,15 @@ button:hover {
   display: flex;
   margin-bottom: 60px;
   grid-template-columns: row;
-
   justify-content: space-around;
   align-content: center;
   text-align: center;
   width: 100%;
+}
+.create-board-game-title h1 {
+  color: #cedaf4;
+  font-family: "Coda Caption", sans-serif;
+  text-align: center;
 }
 
 .category-column-container {
