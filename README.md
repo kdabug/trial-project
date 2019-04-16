@@ -66,5 +66,34 @@ List of databases:
 
 **_code snippet_**
 
-**installation guide**
-Using:
+I had a difficult time trying to manipulate the tiles to change color and switch off the onclick event after the user had clicked on the question tile. My approach - I made my DisplayTile component have state and included an onClick event that not only contained the props function passed down from the parent, but also changed the style of the individual clue div.
+
+```
+onClick(e, clue, value) {
+    e.preventDefault();
+    this.setState((prevState, nextState) => ({
+      active: !prevState.active
+    }));
+    this.props.handleAskQuestion(e, clue, value);
+  }
+
+  render() {
+    const { clue, value, round } = this.props;
+    let tileClass = ["question-box"];
+    if (this.state.active) {
+      tileClass.push("clicked");
+    }
+    return (
+      <>
+        <div
+          className={tileClass.join(" ")}
+          onClick={e => this.onClick(e, clue, value * 100)}
+          id={clue.id}
+        >
+          <span className="money">${value * 100}</span>
+        </div>
+      </>
+    );
+  }
+}
+```
