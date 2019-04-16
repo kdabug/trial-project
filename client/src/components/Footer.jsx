@@ -26,9 +26,7 @@ const Footer = props => {
       <Link className="link" to="/contact">
         CONTACT
       </Link>
-      <a href="https://github.com/kdabug/trial-project/blob/master/flow_images/wireframe.jpg">
-        github
-      </a>
+      <a href="https://github.com/kdabug">github</a>
     </div>
   );
 };
