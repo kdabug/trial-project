@@ -230,7 +230,6 @@ class UserProfilePage extends Component {
 
                   {this.state.userCreated.userCategories.map((category, i) => (
                     <>
-                      <h1>{category.category}</h1>
                       <CategoryDetails
                         question={this.state.userInput.question}
                         answer={this.state.userInput.answer}
@@ -251,7 +250,7 @@ class UserProfilePage extends Component {
             <div className="game-history-container">
               <h1>Game History:</h1>
               <>
-                <DisplayGameHistory />
+                <DisplayGameHistory gameData={this.state.gameData} />
               </>
             </div>
           )}

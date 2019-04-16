@@ -12,7 +12,11 @@ export default props => (
           placeholder="Ex: the eyes have it "
           autocomplete="off"
         />
-        <button type="submit" onClick={props.onSubmit}>
+        <button
+          type="submit"
+          className="pretty-button"
+          onClick={props.onSubmit}
+        >
           Submit Category
         </button>
       </>

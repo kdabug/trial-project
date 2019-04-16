@@ -8,15 +8,24 @@ const Footer = props => {
       <Link to="/">HOME</Link>
       {show ? (
         <>
-          <Link to={"/user/" + userData.id + "/username/" + userData.username}>
+          <Link
+            className="link"
+            to={"/user/" + userData.id + "/username/" + userData.username}
+          >
             PROFILE
           </Link>
-          <Link to="/logout">LOGOUT</Link>
+          <Link className="link" to="/logout">
+            LOGOUT
+          </Link>
         </>
       ) : (
-        <Link to="/login">LOGIN</Link>
+        <Link className="link" to="/login">
+          LOGIN
+        </Link>
       )}
-      <Link to="/contact">CONTACT</Link>
+      <Link className="link" to="/contact">
+        CONTACT
+      </Link>
       <a href="https://github.com/kdabug/trial-project/blob/master/flow_images/wireframe.jpg">
         github
       </a>
