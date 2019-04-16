@@ -43,15 +43,31 @@ The Trial app MVP contains the following:
 **component library**
 List of react components:
 
+- AskQuestion
+- CategoryDetail
+- Contact
+- CreateBoard
+- CreateCategory
+- CreateQuestion
+- DisplayGameHistory
+- DisplayTiles
 - FinalTrial
-- Footer
-- Header
-- NormalMode
-- PersonalMode(user-based questions)
-- ProfilePage
-- RenderGame
-  **API**
-  API for quiz questions: http://jservice.io/
+- GameFooter (on the bottom of all pages)
+- GameHeader (currently unused)
+- Loading (loading screen)
+- LoginForm (user function: login form)
+- LogoutForm (user function: logout form)
+- Modal (designate modals)
+- Portal (create a directory to attach modals)
+- RenderGame (class component; starts and contains game logic)
+- RestartGame (modal that ends game for user and offers to restart game)
+- RightOrWrong (modal that responds to user saying if the user is right or wrong)
+- TitlePage (functional component - shown on the main landing page)
+- UserForm (functional component - used for registering and editing a user's information)
+- UserProfilePage (class component - shows user information and allows user to create questions and categories)
+
+**API**
+API for quiz questions: http://jservice.io/
 
 **databases and relations**
 See database photo in images.
