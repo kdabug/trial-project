@@ -18,8 +18,14 @@ export default props => {
     title,
     userData
   } = props;
+  const style = {
+    backgroundColor: `#0f0eff`,
+    borderRadius: `10px`,
+    border: `4px solid #CEDAF4`
+  };
 
   const showRegister = !show && !toggle;
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   console.log("register user form props", userData);
   return (
     <>
@@ -73,18 +79,25 @@ export default props => {
           <label htmlFor="avatar">Pick an eye: </label>
           <div className="eye-container">
             {eyeAvs &&
-              eyeAvs.map((el, i) => (
-                <input
-                  type="textarea"
-                  className={`avatar-${el.id}`}
-                  name="avatar_id"
-                  key={el.id}
-                  value={el.id}
-                  onChange={onChange}
-                  onClick={onChange}
-                  readonly="readonly"
-                />
-              ))}
+              eyeAvs.map((el, i) => {
+                const randomColor = Math.floor(
+                  Math.random() * 16777215
+                ).toString(16);
+                return (
+                  <input
+                    type="textarea"
+                    className={`avatar-${el.id}`}
+                    name="avatar_id"
+                    key={el.id}
+                    value={el.id}
+                    onChange={onChange}
+                    onClick={onChange}
+                    readonly="readOnly"
+                    //style={{ backgroundColor: `#${randomColor}` }}
+                    style={style}
+                  />
+                );
+              })}
           </div>
           <div className="user-form-button-container">
             <button type="submit" className="pretty-button" onClick={onSubmit}>

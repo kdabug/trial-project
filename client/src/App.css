@@ -480,9 +480,13 @@ button:hover {
   align-content: center;
   border: 4px solid #f8bf05;
   text-transform: uppercase;
-  width: auto;
+  width: 80%;
   height: 60vh;
   background-color: #0f0eff;
+}
+.clue {
+  width: 40%;
+  margin: 0 auto;
 }
 .ask-question-container form {
   display: flex;

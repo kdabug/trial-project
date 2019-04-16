@@ -13,7 +13,7 @@ export default props => {
               <h2 className="ask-question-header">Question</h2>
               <form className="ask-question-form" onSubmit={onSubmit}>
                 <>
-                  <p>{clue.question}</p>
+                  <p className="clue">{clue.question}</p>
                   <label htmlFor="question">Question: What is...</label>
                   <input
                     type="text"
@@ -22,6 +22,7 @@ export default props => {
                     onChange={onChange}
                     placeholder="Jeopardy"
                     autocomplete="off"
+                    className="clue"
                   />
                   <button
                     type="submit"
