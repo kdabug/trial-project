@@ -28,24 +28,32 @@ export default props => {
           <h2>{title}</h2>
           <div className="text-input-container">
             <div className="text-input">
-              <label htmlFor="email">Email </label>
-              <input
-                type="text"
-                onChange={onChange}
-                name="email"
-                id="email"
-                value={email}
-              />
+              <>
+                <label htmlFor="email">Email </label>
+              </>
+              <>
+                <input
+                  type="text"
+                  onChange={onChange}
+                  name="email"
+                  id="email"
+                  value={email}
+                />
+              </>
             </div>
             <div className="text-input">
-              <label htmlFor="username">User Name</label>
-              <input
-                type="text"
-                onChange={onChange}
-                name="username"
-                id="username"
-                value={userData ? userData.user : username}
-              />
+              <>
+                <label htmlFor="username">User Name</label>
+              </>
+              <>
+                <input
+                  type="text"
+                  onChange={onChange}
+                  name="username"
+                  id="username"
+                  value={userData ? userData.user : username}
+                />
+              </>
             </div>
             <div className="text-input">
               {passwordAsk && (
@@ -79,13 +87,17 @@ export default props => {
               ))}
           </div>
           <div className="user-form-button-container">
-            <button type="submit" onClick={onSubmit}>
+            <button type="submit" className="pretty-button" onClick={onSubmit}>
               {submitButtonText}
             </button>
-            <button type="submit" onClick={onClick}>
+            <button type="submit" className="pretty-button" onClick={onClick}>
               {backButtonText}
             </button>
-            <button type="submit" onClick={() => this.props.history.push(`/`)}>
+            <button
+              type="submit"
+              className="pretty-button"
+              onClick={() => this.props.history.push(`/`)}
+            >
               Back to Home
             </button>
           </div>

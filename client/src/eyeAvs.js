@@ -30,6 +30,22 @@ export const eyeAvs = [
   {
     id: 8,
     src: "./eye_avatars/blink8.gif"
+  },
+  {
+    id: 9,
+    src: "./eye_avatars/blink9.gif"
+  },
+  {
+    id: 10,
+    src: "./eye_avatars/blink10.gif"
+  },
+  {
+    id: 11,
+    src: "./eye_avatars/blink11.gif"
+  },
+  {
+    id: 12,
+    src: "./eye_avatars/blink12.gif"
   }
 ];
 

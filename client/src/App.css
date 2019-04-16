@@ -279,7 +279,11 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  padding: 10px;
+  padding-top: 60px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  height: 100%;
 }
 .user-form-container input {
   width: 360px;
@@ -291,6 +295,7 @@ button:hover {
 .user-form-button-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 30px;
 }
 
 .eye-container {
@@ -300,6 +305,7 @@ button:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .avatar-1 {
@@ -326,6 +332,18 @@ button:hover {
 .avatar-8 {
   background: url(./eye_avatars/blink8.gif) center;
 }
+.avatar-9 {
+  background: url(./eye_avatars/blink9.gif) center;
+}
+.avatar-10 {
+  background: url(./eye_avatars/blink10.gif) center;
+}
+.avatar-11 {
+  background: url(./eye_avatars/blink11.gif) center;
+}
+.avatar-12 {
+  background: url(./eye_avatars/blink12.gif) center;
+}
 .avatar-1,
 .avatar-2,
 .avatar-3,
@@ -333,7 +351,11 @@ button:hover {
 .avatar-5,
 .avatar-6,
 .avatar-7,
-.avatar-8 {
+.avatar-8,
+.avatar-10,
+.avatar-9,
+.avatar-11,
+.avatar-12 {
   width: auto;
   height: 15vh;
   background-repeat: no-repeat;
@@ -373,6 +395,13 @@ button:hover {
     left: 0px;
     top: 0px;
   }
+}
+
+.text-input {
+  margin: 5px;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  text-transform: uppercase;
 }
 
 .create-board-container {
