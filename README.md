@@ -1,10 +1,16 @@
+# TRIAL
+the eyes have it. 
+and your trial is short. 
+to provide a question. 
+and be judged by the court.
+
 domain: judging-eyes.surge.sh
 
-**description and user story**
+## description and user story 
 
 This is an app for people who like to play the trivia gameshow "Jeopardy" and who also like eyeballs. The user enters the game and can choose to play without logging in or can log in/create a user profile. Creating a user profile saves a score, and playing the game sends the user to the play-game screen and starts the game. The player chooses a value of question and a category, and an answer will appear with a slot to figure out the question corresponding to that answer by finishing the phrase 'What is....". The game is timed, and after 30 minutes will send the user to the 'Final Trial' sequence. At the end of the game, the score and wager and taken into account to give the user a final score. If logged in, that score will be added to their current user score and the game score will appear on their game history. The user can also create categories and questions (useful for teachers trying to help their class learn a subject). Post-MVP (along with some of the above listed features), I would love to make this game multi-player.
 
-**technologies**
+## technologies
 
 - React and react router
 - CSS and stylized React Components
@@ -16,10 +22,10 @@ This is an app for people who like to play the trivia gameshow "Jeopardy" and wh
 - HTTParty
 - react-countdown-now
 
-**major problems & solutions**
+## major problems & solutions
 Timers for questions. Randomly assigning bonus questions. Potential for multiplayer or online playing with other online users. Using third party api though rails.
 
-**MVP**
+## MVP
 The Trial app MVP contains the following:
 
 - Styled front-end using CSS and Stylized Components
@@ -42,7 +48,7 @@ The Trial app MVP contains the following:
 
 \*all items marked with (\*) are POST-MVP items
 
-**component library**
+## component library
 List of react components:
 
 - FinalTrial
@@ -55,8 +61,10 @@ List of react components:
   **API**
   API for quiz questions: http://jservice.io/
 
-**databases and relations**
+## databases and relations
 See database photo in images.
+
+Databases created on **rails** and hosted on heroku.
 List of databases:
 
 - Users (hasManyCategories hasManyQuestions hasManyGames)
@@ -64,7 +72,7 @@ List of databases:
 - Questions (belongsToUser belongsToCategories)
 - Games (belongsToUser)
 
-**_code snippet_**
+## _code snippet_
 
 I had a difficult time trying to manipulate the tiles to change color and switch off the onclick event after the user had clicked on the question tile. My approach - I made my DisplayTile component have state and included an onClick event that not only contained the props function passed down from the parent, but also changed the style of the individual clue div.
 
