@@ -4,7 +4,7 @@ and your trial is short.
 to provide a question.  
 and be judged by the court.  
 
-**domain**: judging-eyes.surge.sh
+**domain**: [judging-eyes.surge.sh](judging-eyes.surge.s)
 
 ## description and user story 
 
